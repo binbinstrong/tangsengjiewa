@@ -37,6 +37,10 @@ namespace 红瓦功能揭秘.机电
             var newend = pickpoint;
             var newstart1 = pickpoint;
             var newend1 = endpo;
+
+
+
+
             Transaction ts = new Transaction(doc, "***********");
             try
             {
