@@ -8,6 +8,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using 红瓦功能揭秘.BinLibrary.Helpers;
 
 namespace 红瓦功能揭秘.通用
 {
@@ -29,7 +30,7 @@ namespace 红瓦功能揭秘.通用
                 MessageBox.Show("当前不是族文档，请到族文档使用该命令");
             }
 
-            var views = doc.ViewCollector();
+            var views = doc.TCollector<View>().Where(m=>!(m.IsTemplate));//doc.ViewCollector();
 
             FilteredElementCollector collector = new FilteredElementCollector(doc);
 
@@ -38,7 +39,6 @@ namespace 红瓦功能揭秘.通用
             Transaction ts = new Transaction(doc, "显示族元素");
             try
             { 
-
                 ts.Start();
                 foreach (var view in views)
                 {
@@ -54,7 +54,6 @@ namespace 红瓦功能揭秘.通用
                         }
                 }
                 ts.Commit();
-
             }
             catch (Exception)
             {
