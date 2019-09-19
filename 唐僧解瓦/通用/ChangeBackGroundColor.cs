@@ -9,7 +9,7 @@ using Autodesk.Revit.UI;
 using 唐僧解瓦.BinLibrary.Extensions;
 using Color = System.Windows.Media.Color;
 
-namespace 红瓦功能揭秘.通用
+namespace 唐僧揭瓦.通用
 {
     /// <summary>
     /// 更改视图背景

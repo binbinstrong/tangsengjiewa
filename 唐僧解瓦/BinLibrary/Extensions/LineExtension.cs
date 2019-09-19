@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 红瓦功能揭秘.BinLibrary.Extensions
+namespace 唐僧揭瓦.BinLibrary.Extensions
 {
    public static class LineExtension
     {

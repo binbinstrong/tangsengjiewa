@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace 红瓦功能揭秘.机电.ToolUIs
+namespace 唐僧揭瓦.机电.ToolUIs
 {
     /// <summary>
     /// MepcurveRank.xaml 的交互逻辑

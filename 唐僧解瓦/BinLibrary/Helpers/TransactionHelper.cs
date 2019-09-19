@@ -9,7 +9,7 @@ using 唐僧解瓦.BinLibrary.Extensions;
 //using BinLibrary.WinHelper;
 using 唐僧解瓦.BinLibrary.Helpers;
 
-namespace 红瓦功能揭秘.BinLibrary.Helpers
+namespace 唐僧揭瓦.BinLibrary.Helpers
 {
     public static class TransactionHelper
     {

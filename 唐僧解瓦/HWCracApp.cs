@@ -32,7 +32,7 @@ using System.Windows.Media.Imaging;
  * 
 /************************************************************************************/
 #endregion
-namespace 红瓦功能揭秘
+namespace 唐僧揭瓦
 {
     class HWCracApp : IExternalApplication
     {
