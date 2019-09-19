@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace 唐僧解瓦.BinLibrary.Extensions
+namespace 唐僧揭瓦.BinLibrary.Extensions
 {
     public static class WindwoExtension
     {

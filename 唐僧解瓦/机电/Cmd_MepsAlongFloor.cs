@@ -11,7 +11,7 @@ using 唐僧揭瓦.BinLibrary.Extensions;
  using Microsoft.VisualBasic;
 using FaceArray = Autodesk.Revit.DB.FaceArray;
 
-namespace 唐僧解瓦.机电
+namespace 唐僧揭瓦.机电
 {
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
