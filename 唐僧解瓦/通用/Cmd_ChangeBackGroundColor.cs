@@ -17,7 +17,7 @@ namespace 唐僧揭瓦.通用
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]
-    public class ChangeBackGroundColor : IExternalCommand
+    public class Cmd_ChangeBackGroundColor : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

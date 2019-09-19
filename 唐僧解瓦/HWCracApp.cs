@@ -39,7 +39,7 @@ namespace 唐僧揭瓦
         public Autodesk.Revit.UI.Result OnStartup(UIControlledApplication application)
         {
 
-            string bintab = "BFaster";
+            string bintab = "唐僧BIM";
             application.CreateRibbonTab(bintab);
             PushButtonData button1 = new PushButtonData("binbox", "resetbox", @"C:\ProgramData\Autodesk\Revit\Addins\2015\bincropbox.dll", "bincropbox.CropBoxQuickSet");
             PushButtonData button2 = new PushButtonData("changeplane", "changeplane", @"C:\ProgramData\Autodesk\Revit\Addins\2015\changeplane.dll", "changeplane.binchangeplane");
