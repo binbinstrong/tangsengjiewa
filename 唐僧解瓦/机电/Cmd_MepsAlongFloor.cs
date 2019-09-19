@@ -51,7 +51,7 @@ namespace 唐僧解瓦.机电
             var inputboxStr = Microsoft.VisualBasic.Interaction.InputBox("输入距离楼板距离","距离","0");
 
             var distance = default(double);
-             
+            
             var parseresult =double.TryParse(inputboxStr, out distance);
             if (!parseresult) return Result.Cancelled;
 
