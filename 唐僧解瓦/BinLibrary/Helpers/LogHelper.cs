@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 唐僧揭瓦.BinLibrary.Helpers
+namespace 唐僧解瓦.BinLibrary.Helpers
 {
     public static class LogHelper
     {

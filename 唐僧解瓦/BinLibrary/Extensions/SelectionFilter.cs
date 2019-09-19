@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI.Selection;
 
-namespace 唐僧揭瓦.BinLibrary.Extensions
+namespace 唐僧解瓦.BinLibrary.Extensions
 {
     public class SelectionFilter : ISelectionFilter
     {

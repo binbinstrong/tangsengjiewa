@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 
-namespace 唐僧揭瓦.BinLibrary.Helpers
+namespace 唐僧解瓦.BinLibrary.Helpers
 {
    public static class CollectorHelper
     {

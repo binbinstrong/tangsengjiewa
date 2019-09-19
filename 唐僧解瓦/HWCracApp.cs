@@ -32,7 +32,7 @@ using System.Windows.Media.Imaging;
  * 
 /************************************************************************************/
 #endregion
-namespace 唐僧揭瓦
+namespace 唐僧解瓦
 {
     class HWCracApp : IExternalApplication
     {
