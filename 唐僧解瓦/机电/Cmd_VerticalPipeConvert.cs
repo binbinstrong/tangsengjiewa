@@ -15,6 +15,9 @@ using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 立管转换
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]

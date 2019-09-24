@@ -18,6 +18,9 @@ using 唐僧解瓦.BinLibrary.Extensions;
 using 唐僧解瓦.机电.ToolUIs;
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 管线排列
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]

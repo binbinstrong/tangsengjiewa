@@ -14,10 +14,12 @@ using 唐僧解瓦.BinLibrary.Extensions;
 
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 管道倒角
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
-
     class Cmd_ChamferPipes : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)

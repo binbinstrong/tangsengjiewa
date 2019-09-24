@@ -12,6 +12,9 @@ using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.通用
 {
+    /// <summary>
+    /// 隐藏族中元素
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]

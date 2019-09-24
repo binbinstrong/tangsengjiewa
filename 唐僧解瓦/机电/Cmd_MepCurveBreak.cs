@@ -12,6 +12,9 @@ using 唐僧解瓦.BinLibrary.Extensions;
 
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 管线打断
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]

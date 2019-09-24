@@ -15,12 +15,14 @@ using 唐僧解瓦.BinLibrary.Extensions;
 
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 管线分段
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     public class Cmd_BreakMepcurvesInPieces : IExternalCommand
     {
-        
         #region uiapp uid doc 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

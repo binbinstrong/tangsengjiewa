@@ -13,6 +13,9 @@ using FaceArray = Autodesk.Revit.DB.FaceArray;
 
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 管线随板
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]
