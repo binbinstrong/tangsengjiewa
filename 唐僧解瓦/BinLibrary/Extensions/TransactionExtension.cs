@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.BinLibrary.Extensions
 {
@@ -14,6 +15,17 @@ namespace 唐僧解瓦.BinLibrary.Extensions
             var options = trans.GetFailureHandlingOptions();
             options.SetFailuresPreprocessor(new failure_ignore());
         }
+
+        //public static void Invoke(this Document doc, Action<Transaction> action, string transactionName = "aaa")
+        //{
+        //    Transaction ts = new Transaction(doc, transactionName);
+        //    LogHelper.LogException(delegate
+        //    {
+        //        ts.Start();
+        //        action(ts);
+        //        ts.Commit();
+        //    }, @"c:\transactionException.txt");
+        //}
     }
 
     public class failure_ignore : IFailuresPreprocessor
