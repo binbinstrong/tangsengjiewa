@@ -22,7 +22,7 @@ namespace 唐僧解瓦.通用
     [Regeneration(RegenerationOption.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     class Cmd_3DregionView : IExternalCommand
-    {
+    { 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;

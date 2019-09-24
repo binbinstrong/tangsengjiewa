@@ -18,7 +18,7 @@ namespace 唐僧解瓦.通用
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]
     public class Cmd_ChangeBackGroundColor : IExternalCommand
-    {
+    { 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             var uiapp = commandData.Application;
