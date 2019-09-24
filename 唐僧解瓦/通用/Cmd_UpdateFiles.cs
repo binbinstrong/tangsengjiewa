@@ -23,7 +23,7 @@ namespace 唐僧解瓦.通用
     {  
         private string folderpath = default(string);
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-        {
+        { 
             var uidoc = commandData.Application.ActiveUIDocument;
             var doc = uidoc.Document;
             var sel = uidoc.Selection;
