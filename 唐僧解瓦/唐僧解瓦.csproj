@@ -111,6 +111,7 @@
     <Compile Include="通用\Cmd_HideElementInfamilyDoc.cs" />
     <Compile Include="通用\Cmd_netHeightAnalyses.cs" />
     <Compile Include="通用\Cmd_UnhideElementsInFamlyDoc.cs" />
+    <Compile Include="通用\Cmd_UpdateFiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="机电\ToolUIs\MepcurveRank.xaml">
@@ -122,6 +123,7 @@
     <Folder Include="BinLibrary\Utils\" />
     <Folder Include="建筑\" />
     <Folder Include="结构\" />
+    <Folder Include="通用\UIs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
