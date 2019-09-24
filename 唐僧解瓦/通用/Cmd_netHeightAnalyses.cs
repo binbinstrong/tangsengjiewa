@@ -21,7 +21,7 @@ namespace 唐僧解瓦.通用
     class Cmd_netHeightAnalyses:IExternalCommand
     {   
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-        {
+        { 
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
