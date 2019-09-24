@@ -49,6 +49,7 @@ namespace 唐僧解瓦
             List<RibbonItem> binButtons = new List<RibbonItem>();
             binButtons.AddRange(m_projectPanel.AddStackedItems(button1, button2));
             
+            
             // add new ribbon panel 
             //RibbonPanel ribbonPanel1 = application.CreateRibbonPanel("binpanel1");
             ////create a push button inthe bibbon panel "newbibbonpanel"
