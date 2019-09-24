@@ -20,7 +20,7 @@ namespace 唐僧解瓦.通用
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]
     class Cmd_UpdateFiles : IExternalCommand
-    { 
+    {  
         private string folderpath = default(string);
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {

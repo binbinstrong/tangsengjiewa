@@ -12,7 +12,6 @@ using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.通用
 {
-
     /// <summary>
     /// 净高分析
     /// </summary>
@@ -45,7 +44,8 @@ namespace 唐僧解瓦.通用
             //创建房间（根据墙围成的闭合图形生成房间）
             doc.Invoke(m => { Createrooms(doc, doc.ActiveView.GenLevel, doc.Phases.get_Item(1)); }, "当前视图楼层创建房间");
             //下一步用创建的房间进行标高分析
-
+             
+            
             return Result.Succeeded;
         }
 
