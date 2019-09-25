@@ -20,10 +20,12 @@ namespace 唐僧解瓦.通用
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]
     class Cmd_UpdateFiles : IExternalCommand
-    {   
+    {
         private string folderpath = default(string);
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-        { 
+        {
+            var uiapp = commandData.Application;
+            var dbapp = uiapp.Application;
             var uidoc = commandData.Application.ActiveUIDocument;
             var doc = uidoc.Document;
             var sel = uidoc.Selection;
@@ -48,17 +50,12 @@ namespace 唐僧解瓦.通用
             }
             foreach (var file in files)
             {
-                doc.Invoke(m =>
-                {
-                    var temdoc = doc.Application.OpenDocumentFile(file);
-                    temdoc.Save();
-                    temdoc.Close();
-                }, "升级文件");
+                var temdoc = dbapp.OpenDocumentFile(file);
+                temdoc.Save();
+                temdoc.Close();
             }
-            
             return Result.Succeeded;
         }
-
         private void OnfileOk(object sender, CancelEventArgs e)
         {
             (sender as OpenFileDialog).RestoreDirectory = true;

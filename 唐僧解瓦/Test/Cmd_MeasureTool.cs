@@ -9,6 +9,9 @@ using Autodesk.Revit.UI;
 
 namespace 唐僧解瓦.Test
 {
+    /// <summary>
+    /// 测量工具
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]

@@ -13,6 +13,9 @@ using 唐僧解瓦.BinLibrary.RevitHelper;
 
 namespace 唐僧解瓦.Test
 {
+    /// <summary>
+    /// 文件升级
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]

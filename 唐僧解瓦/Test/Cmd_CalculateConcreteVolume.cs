@@ -13,7 +13,7 @@ using 唐僧解瓦.BinLibrary.Extensions;
 namespace 唐僧解瓦.Test
 {
     /// <summary>
-    /// 计算集合元素体积
+    /// 计算元素体积
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]

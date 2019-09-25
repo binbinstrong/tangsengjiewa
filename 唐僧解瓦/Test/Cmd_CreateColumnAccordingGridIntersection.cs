@@ -14,6 +14,9 @@ using 唐僧解瓦.Test.UIs;
 
 namespace 唐僧解瓦.Test
 {
+    /// <summary>
+    /// 在轴线交点处生成柱子
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]

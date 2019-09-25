@@ -13,7 +13,7 @@ using 唐僧解瓦.BinLibrary.Extensions;
 namespace 唐僧解瓦.Test
 {
     /// <summary>
-    /// 计算墙的面积
+    /// 计算墙的两面 面积
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]

@@ -9,6 +9,9 @@ using Autodesk.Revit.UI;
 
 namespace 唐僧解瓦.Test
 {
+    /// <summary>
+    /// 元素编码
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]

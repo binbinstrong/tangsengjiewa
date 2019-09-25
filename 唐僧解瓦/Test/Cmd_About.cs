@@ -11,6 +11,9 @@ using 唐僧解瓦.Test.UIs;
 
 namespace 唐僧解瓦.Test
 {
+    /// <summary>
+    /// 工具说明
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]
