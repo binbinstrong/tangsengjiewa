@@ -33,25 +33,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\AdWindows.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="ManagedMC3">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\ManagedMC3.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\ManagedMC3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\Microsoft.Expression.Interactions.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAddInUtility">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAddInUtility.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAddInUtility.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +59,7 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -69,15 +69,16 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UIFramework">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\UIFramework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\UIFramework.dll</HintPath>
     </Reference>
     <Reference Include="UIFrameworkServices">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\UIFrameworkServices.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\UIFrameworkServices.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinLibrary\Extensions\ColorExtension.cs" />
+    <Compile Include="BinLibrary\Extensions\ConnectorExtension.cs" />
     <Compile Include="BinLibrary\Extensions\CreationExtension.cs" />
     <Compile Include="BinLibrary\Extensions\DoubleExtension.cs" />
     <Compile Include="BinLibrary\Extensions\ElementIdExtension.cs" />
@@ -93,9 +94,11 @@
     <Compile Include="BinLibrary\Extensions\WindwoExtension.cs" />
     <Compile Include="BinLibrary\Extensions\XYZExtension.cs" />
     <Compile Include="BinLibrary\Helpers\collectorHelper.cs" />
+    <Compile Include="BinLibrary\Helpers\ConnectorHelper.cs" />
     <Compile Include="BinLibrary\Helpers\LogHelper.cs" />
     <Compile Include="BinLibrary\Helpers\TransactionHelper.cs" />
     <Compile Include="BinLibrary\RevitHelper\RevitWindowHelper.cs" />
+    <Compile Include="BinLibrary\Utils\Utils.cs" />
     <Compile Include="HWCracApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\UIs\AboutForm.cs">
@@ -119,6 +122,7 @@
     </Compile>
     <Compile Include="Test\TestCmd_FIlterRoom.cs" />
     <Compile Include="机电\Cmd_ChamferPipes.cs" />
+    <Compile Include="机电\Cmd_changeSystem.cs" />
     <Compile Include="机电\Cmd_ConnectEquipMent.cs" />
     <Compile Include="机电\Cmd_CutMepsInPieces.cs" />
     <Compile Include="机电\Cmd_MepCurveBreak.cs" />
@@ -142,7 +146,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BinLibrary\Utils\" />
     <Folder Include="建筑\" />
     <Folder Include="结构\" />
     <Folder Include="通用\UIs\" />
