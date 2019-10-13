@@ -12,6 +12,9 @@ using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.通用
 {
+    /// <summary>
+    /// 框选三维
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]

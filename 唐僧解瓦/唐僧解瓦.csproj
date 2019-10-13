@@ -135,6 +135,7 @@
     <Compile Include="通用\Cmd_3DregionView.cs" />
     <Compile Include="通用\Cmd_ChangeBackGroundColor.cs" />
     <Compile Include="通用\Cmd_HideElementInfamilyDoc.cs" />
+    <Compile Include="通用\Cmd_MultipleLinkFile.cs" />
     <Compile Include="通用\Cmd_netHeightAnalyses.cs" />
     <Compile Include="通用\Cmd_PickBox3D.cs" />
     <Compile Include="通用\Cmd_UnhideElementsInFamlyDoc.cs" />
