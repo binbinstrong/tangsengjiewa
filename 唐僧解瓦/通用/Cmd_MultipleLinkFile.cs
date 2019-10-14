@@ -7,6 +7,8 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using Microsoft.Win32;
+using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.通用
 {
@@ -30,7 +32,27 @@ namespace 唐僧解瓦.通用
             // pop up dialog let users to select files
             // 未完待续
 
+            var opdg = new OpenFileDialog();
+            opdg.Multiselect = true;
+            opdg.Filter = "(*.rvt)|*.rvt";
+            var dialogresult = opdg.ShowDialog();
 
+            var count = opdg.FileNames.Length;
+            string[] files = new string[count];
+            
+            if (dialogresult == true)
+            {
+                files = opdg.FileNames;
+            }
+            doc.Invoke(m =>
+            {
+                foreach (var file in files)
+                {
+                    var linktypeId = CreateRevitLink(doc, file);
+                    CreateLinkInstances(doc, linktypeId);
+                }
+                 
+            },"批量链接");
 
             return Result.Succeeded;
         }
