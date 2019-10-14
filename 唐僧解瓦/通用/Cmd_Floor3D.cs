@@ -45,6 +45,7 @@ namespace 唐僧解瓦.通用
             var targetfloor = fsui.FloorBox.SelectionBoxItem as Level;
             var upperfloor = levels.Where(m => m.Elevation > targetfloor.Elevation)?.OrderBy(m => m.Elevation)?.FirstOrDefault();
             
+
             var categories = doc.Settings.Categories;
             var modelcategories = categories.Cast<Category>().Where(m => m.CategoryType == CategoryType.Model).ToList();
 
