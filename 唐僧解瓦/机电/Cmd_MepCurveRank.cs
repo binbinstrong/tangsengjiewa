@@ -87,7 +87,7 @@ namespace 唐僧解瓦.机电
             return Result.Succeeded;
         }
         /// <summary>
-        /// 两条管线须平行
+        /// 获取管线间的方向 由mep 指向 mep2  两条管线须平行
         /// </summary>
         /// <param name="mep"></param>
         /// <param name="mep2"></param>

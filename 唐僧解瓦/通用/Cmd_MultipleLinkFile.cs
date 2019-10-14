@@ -51,7 +51,6 @@ namespace 唐僧解瓦.通用
                     var linktypeId = CreateRevitLink(doc, file);
                     CreateLinkInstances(doc, linktypeId);
                 }
-                 
             },"批量链接");
 
             return Result.Succeeded;

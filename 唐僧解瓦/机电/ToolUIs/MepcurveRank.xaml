@@ -10,8 +10,8 @@
             <TabControl HorizontalAlignment="Left" Height="180" Margin="0,0,-107,-182" VerticalAlignment="Top" Width="259">
                 <TabItem Header="水平分布" IsSelected="True">
                     <Grid Background="#FFE5E5E5">
-                        <RadioButton Content="按管外壁" HorizontalAlignment="Left" Margin="19,35,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Content="按管中" HorizontalAlignment="Left" Margin="139,35,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Content="按管外壁" HorizontalAlignment="Left" Margin="19,35,0,0" VerticalAlignment="Top" />
+                        <RadioButton Content="按管中" HorizontalAlignment="Left" Margin="139,35,0,0" VerticalAlignment="Top" IsChecked="True"/>
                         <TextBlock HorizontalAlignment="Left" Margin="26,113,0,0" TextWrapping="Wrap" Text="分布间距" VerticalAlignment="Top"/>
                         <TextBox Name ="horizontalDis"  HorizontalAlignment="Left" Height="23" Margin="108,113,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="120" HorizontalContentAlignment="Center"/>
                     </Grid>

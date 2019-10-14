@@ -134,23 +134,30 @@
     </Compile>
     <Compile Include="通用\Cmd_3DregionView.cs" />
     <Compile Include="通用\Cmd_ChangeBackGroundColor.cs" />
+    <Compile Include="通用\Cmd_Floor3D.cs" />
     <Compile Include="通用\Cmd_HideElementInfamilyDoc.cs" />
     <Compile Include="通用\Cmd_MultipleLinkFile.cs" />
     <Compile Include="通用\Cmd_netHeightAnalyses.cs" />
     <Compile Include="通用\Cmd_PickBox3D.cs" />
     <Compile Include="通用\Cmd_UnhideElementsInFamlyDoc.cs" />
     <Compile Include="通用\Cmd_UpdateFiles.cs" />
+    <Compile Include="通用\UIs\FloorSelector.xaml.cs">
+      <DependentUpon>FloorSelector.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="机电\ToolUIs\MepcurveRank.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="通用\UIs\FloorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="建筑\" />
     <Folder Include="结构\" />
-    <Folder Include="通用\UIs\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Test\UIs\AboutForm.resx">
