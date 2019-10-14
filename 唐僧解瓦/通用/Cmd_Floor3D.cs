@@ -30,8 +30,7 @@ namespace 唐僧解瓦.通用
             var acview = doc.ActiveView;
 
             var viewfamilytypes = doc.TCollector<ViewFamilyType>();
-            var viewplanfamilytype = viewfamilytypes.Where(m => m.ViewFamily == ViewFamily.FloorPlan)
-                .First();
+            var viewplanfamilytype = viewfamilytypes.Where(m => m.ViewFamily == ViewFamily.FloorPlan).First();
             var view3Dfamilytype = viewfamilytypes.Where(m => m.ViewFamily == ViewFamily.ThreeDimensional).First();
 
             var levels = doc.TCollector<Level>();
@@ -44,8 +43,7 @@ namespace 唐僧解瓦.通用
 
             var targetfloor = fsui.FloorBox.SelectionBoxItem as Level;
             var upperfloor = levels.Where(m => m.Elevation > targetfloor.Elevation)?.OrderBy(m => m.Elevation)?.FirstOrDefault();
-            
-
+             
             var categories = doc.Settings.Categories;
             var modelcategories = categories.Cast<Category>().Where(m => m.CategoryType == CategoryType.Model).ToList();
 
@@ -65,7 +63,6 @@ namespace 唐僧解瓦.通用
 
             Transaction temtran = new Transaction(doc, "temtransaction");
             temtran.Start();
-
             var temgroup = doc.Create.NewGroup(modelelementsids);
             var temview = ViewPlan.Create(doc, viewplanfamilytype.Id, targetfloor.Id);
             temboundingbox = temgroup.get_BoundingBox(temview);
@@ -81,6 +78,7 @@ namespace 唐僧解瓦.通用
             newbox.Min = new XYZ(oldmin.X, oldmin.Y, zMin);
             newbox.Max = new XYZ(oldmax.X, oldmax.Y, zMax);
             var new3dview = default(View3D);
+            
             doc.Invoke(m =>
             {
                 new3dview = View3D.CreateIsometric(doc, view3Dfamilytype.Id);
