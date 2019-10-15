@@ -33,7 +33,7 @@ namespace 唐僧解瓦.建筑
                 doc.GetSelectionFilter(m => m.Category.Id.IntegerValue == (int)BuiltInCategory.OST_StructuralFraming),
                 "选择生成板的梁");
 
-
+             
             //var ele = sel.PickObject(ObjectType.Element).GetElement(doc);
             //var solid = ele.get_Geometry(new Options()).GetSolidOfGeometryObject().First();
             //var trans = Transform.Identity;
