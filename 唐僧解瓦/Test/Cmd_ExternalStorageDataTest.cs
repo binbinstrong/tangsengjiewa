@@ -127,7 +127,9 @@ namespace 唐僧解瓦.Test
             Schema schema = Schema.Lookup(_data.Guid);
             Type t = _data.Fields.FirstOrDefault(x => x.Key == fieldName).Type;
             Entity e = ds.GetEntity(schema);
-            var o = e.GetType().GetMethod("Get", new Type[] { typeof(string) }).MakeGenericMethod(t).Invoke(e, new object[] { fieldName });
+            //var o = e.GetType().GetMethod("Get", new Type[] { typeof(string) }).MakeGenericMethod(t).Invoke(e, new object[] { fieldName });
+
+            var o = e.GetType().GetMethod("Get", new Type[] { typeof(string), typeof(DisplayUnitType) }).MakeGenericMethod(t).Invoke(e, new object[] { fieldName, DisplayUnitType.DUT_METERS });
             //object o = ds.GetEntity(schema).Get<t>(fieldName); // 这里有错误
             dynamic d = Convert.ChangeType(o, t);
             return d;

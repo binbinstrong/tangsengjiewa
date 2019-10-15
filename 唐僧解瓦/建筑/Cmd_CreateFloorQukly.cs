@@ -47,7 +47,7 @@ namespace 唐僧解瓦.建筑
             //    directshape.AppendShape(new List<GeometryObject>() {newsolid});
             //}, "test");
 
-
+            //doc.Create.NewFloor()
 
 
 
