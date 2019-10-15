@@ -21,5 +21,14 @@ namespace 唐僧解瓦.BinLibrary.Extensions
 
             return newcolor;
         }
+
+        public static Color ToRvtColor(this System.Drawing.Color color)
+        {
+            var r = color.R;
+            var g = color.G;
+            var b = color.B;
+
+            return new Color(r,g,b);
+        }
     }
 }

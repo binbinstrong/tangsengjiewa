@@ -17,32 +17,38 @@ namespace 唐僧解瓦.BinLibrary.Extensions
             var origin = line.Origin;
             var norm = default(XYZ);
 
-            if (dir.IsParallel(XYZ.BasisX))
-            {
-                norm = dir.CrossProduct(XYZ.BasisY).Normalize();
-                //MessageBox.Show("X");
-            }
-            else if (dir.IsParallel(XYZ.BasisY))
-            {
-                norm = dir.CrossProduct(XYZ.BasisX).Normalize();
-                //MessageBox.Show("Y");
-            }
-            else if (dir.IsParallel(XYZ.BasisZ))
-            {
-                norm = dir.CrossProduct(XYZ.BasisX);
-                //MessageBox.Show("Z");
-            }
-            else
-            {
-                norm = dir.CrossProduct(XYZ.BasisX);
-            }
+            norm = dir.getRandomNorm();
+
+            #region oldFun
+
+            //if (dir.IsParallel(XYZ.BasisX))
+            //{
+            //    norm = dir.CrossProduct(XYZ.BasisY).Normalize();
+            //    //MessageBox.Show("X");
+            //}
+            //else if (dir.IsParallel(XYZ.BasisY))
+            //{
+            //    norm = dir.CrossProduct(XYZ.BasisX).Normalize();
+            //    //MessageBox.Show("Y");
+            //}
+            //else if (dir.IsParallel(XYZ.BasisZ))
+            //{
+            //    norm = dir.CrossProduct(XYZ.BasisX);
+            //    //MessageBox.Show("Z");
+            //}
+            //else
+            //{
+            //    norm = dir.CrossProduct(XYZ.BasisX);
+            //}
+
+            #endregion
 
             var plan = Plane.CreateByNormalAndOrigin(norm, origin);
-
-            doc.Invoke(m => {
+            doc.Invoke(m =>
+            {
                 var sketchplane = SketchPlane.Create(doc, plan);
                 doc.Create.NewModelCurve(line, sketchplane);
-            },"aa");
+            }, "aa");
         }
     }
 }
