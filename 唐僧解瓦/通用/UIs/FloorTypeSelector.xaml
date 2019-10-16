@@ -1,0 +1,18 @@
+﻿<Window x:Class="唐僧解瓦.通用.UIs.FloorTypeSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:唐僧解瓦.通用.UIs"
+             mc:Ignorable="d" Height="87.172" Width="410.078">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="5">
+
+                <TextBlock Text="楼板类型" Margin="3"></TextBlock>
+                <ComboBox Text="楼板类型" Name="floortypeBox"   MinWidth="300"  Width="auto"></ComboBox>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

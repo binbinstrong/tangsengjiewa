@@ -10,6 +10,7 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using 唐僧解瓦.BinLibrary.Extensions;
 using 唐僧解瓦.BinLibrary.Helpers;
+using 唐僧解瓦.通用.UIs;
 
 namespace 唐僧解瓦.建筑
 {
@@ -30,12 +31,31 @@ namespace 唐僧解瓦.建筑
 
             var acview = doc.ActiveView;
 
-            var beamrefs = sel.PickObjects(ObjectType.Element,
-                doc.GetSelectionFilter(m => m.Category.Id.IntegerValue == (int)BuiltInCategory.OST_StructuralFraming),
-                "选择生成板的梁");
+            var floorTypes = doc.TCollector<FloorType>().ToList();
+
+            var selectorUI = FloorTypeSelector.Instance;
+            selectorUI.floortypeBox.ItemsSource = floorTypes;
+            selectorUI.floortypeBox.DisplayMemberPath = "Name";
+            selectorUI.floortypeBox.SelectedIndex = 0;
+            selectorUI.ShowDialog();
+
+            var targetFloortype = selectorUI.floortypeBox.SelectedItem as FloorType; //目标楼板类型
+            
+            var beamrefs = default(IList<Reference>);
+            try
+            {
+                beamrefs = sel.PickObjects(ObjectType.Element,
+                    doc.GetSelectionFilter(m => m.Category.Id.IntegerValue == (int)BuiltInCategory.OST_StructuralFraming),
+                    "选择生成板的梁");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("用户取消了命令！");
+                return Result.Cancelled;
+            }
+             
             var beams = beamrefs.Select(m => m.GetElement(doc));
-
-
+            
             //var ele = sel.PickObject(ObjectType.Element).GetElement(doc);
             //var solid = ele.get_Geometry(new Options()).GetSolidOfGeometryObject().First();
             //var trans = Transform.Identity;
@@ -109,6 +129,7 @@ namespace 唐僧解瓦.建筑
                 foreach (var curvearray in curvearrays)
                 {
                     doc.Create.NewFloor(curvearray, false);
+                    //doc.Create.NewFloor(curvearray, false); //可指定楼板类型来创建
                 }
             },"一键楼板");
 

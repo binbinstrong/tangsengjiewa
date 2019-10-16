@@ -130,6 +130,9 @@
     <Compile Include="通用\UIs\FloorSelector.xaml.cs">
       <DependentUpon>FloorSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="通用\UIs\FloorTypeSelector.xaml.cs">
+      <DependentUpon>FloorTypeSelector.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="机电\ToolUIs\MepcurveRank.xaml">
@@ -137,6 +140,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="通用\UIs\FloorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="通用\UIs\FloorTypeSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
