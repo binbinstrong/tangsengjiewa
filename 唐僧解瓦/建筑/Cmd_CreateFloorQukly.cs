@@ -35,6 +35,7 @@ namespace 唐僧解瓦.建筑
                 "选择生成板的梁");
             var beams = beamrefs.Select(m => m.GetElement(doc));
 
+
             //var ele = sel.PickObject(ObjectType.Element).GetElement(doc);
             //var solid = ele.get_Geometry(new Options()).GetSolidOfGeometryObject().First();
             //var trans = Transform.Identity;
@@ -47,6 +48,7 @@ namespace 唐僧解瓦.建筑
             //    directshape.AppendShape(new List<GeometryObject>() {newsolid});
             //}, "test");
             //doc.Create.NewFloor()
+
 
             Transaction temtran = new Transaction(doc, "temtran");
             temtran.Start();
@@ -101,8 +103,7 @@ namespace 唐僧解瓦.建筑
             curveloops = orderedcurveloops;
                  
             var curvearrays = curveloops.Select(m => m.ToCurveArray());
-
-
+             
             doc.Invoke(m =>
             {
                 foreach (var curvearray in curvearrays)
@@ -121,7 +122,7 @@ namespace 唐僧解瓦.建筑
 
             return Result.Succeeded;
         }
-
+        
         public Solid MergeSolids(Solid solid1, Solid solid2)
         {
             var result = default(Solid);
@@ -154,7 +155,7 @@ namespace 唐僧解瓦.建筑
             }
             return result;
         }
-
+        
     }
 
     public static class TemUtils

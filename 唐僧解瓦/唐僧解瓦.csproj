@@ -84,6 +84,7 @@
     <Compile Include="HWCracApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\Cmd_ExternalStorageDataTest.cs" />
+    <Compile Include="Test\Cmd_ExternalStorageTest.cs" />
     <Compile Include="Test\UIs\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
