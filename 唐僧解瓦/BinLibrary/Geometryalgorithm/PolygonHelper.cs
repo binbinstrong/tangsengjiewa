@@ -8,7 +8,7 @@ using 唐僧解瓦.BinLibrary.Extensions;
 
 namespace 唐僧解瓦.BinLibrary.Geometryalgorithm
 {
-    public static class PolygonHelper
+    public class PolygonHelper
     {
         /// <summary>
         /// 判断点在多边形内（包含凹凸多边形）
@@ -30,6 +30,12 @@ namespace 唐僧解瓦.BinLibrary.Geometryalgorithm
                     var angle = Angle(curpo, nextpo, po, planNorm);
                     //MessageBox.Show(angle.ToString());
                     angles += angle;
+
+                    var line = Line.CreateBound(curpo, nextpo);
+                    if (po.IsOnLine(line))
+                    {
+                        return true;
+                    }
                 }
                 else if (i == points.Count - 1)
                 {
@@ -38,6 +44,12 @@ namespace 唐僧解瓦.BinLibrary.Geometryalgorithm
                     var angle = Angle(curpo, nextpo, po, planNorm);
                     //MessageBox.Show(angle.ToString());
                     angles += angle;
+
+                    var line = Line.CreateBound(curpo, nextpo);
+                    if (po.IsOnLine(line))
+                    {
+                        return true;
+                    }
                 }
             }
             //MessageBox.Show(angles.ToString());
@@ -63,6 +75,12 @@ namespace 唐僧解瓦.BinLibrary.Geometryalgorithm
         /// <returns></returns>
         public static double Angle(XYZ point1, XYZ point2, XYZ point0, XYZ planNorm)
         {
+            var line = Line.CreateBound(point1, point2);
+            if (point0.IsOnLine(line))
+            {
+                throw new Exception("samline Exception");
+            }
+
             var vec1 = (point1 - point0).Normalize();
             var vec2 = (point2 - point0).Normalize();
             if (vec1.IsSameDirection(vec2))
