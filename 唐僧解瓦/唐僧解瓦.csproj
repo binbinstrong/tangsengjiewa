@@ -33,16 +33,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdWindows">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\AdWindows.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\AdWindows.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -105,6 +105,7 @@
       <DependentUpon>ColumnTypesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Test\TestCmd_FIlterRoom.cs" />
+    <Compile Include="建筑\Cmd_BeamAlignToRoofAndFloor.cs" />
     <Compile Include="建筑\Cmd_CreateFloorQukly.cs" />
     <Compile Include="机电\Cmd_ChamferPipes.cs" />
     <Compile Include="机电\Cmd_changeSystem.cs" />
