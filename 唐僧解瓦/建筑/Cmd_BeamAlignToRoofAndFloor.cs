@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -22,39 +23,71 @@ namespace 唐僧解瓦.建筑
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
             Selection sel = uidoc.Selection;
-
+            
             var acview = doc.ActiveView;
-
+            
             var IsAlignTopFAce = false;   //根据设置确定
             var IsAlignBottomFAce = true; //根据设置确定
-
+            
+            var selectionCollector = new FilteredElementCollector(doc,sel.GetElementIds());//选择集集合
+            
             var beamFilter = new ElementCategoryFilter(BuiltInCategory.OST_StructuralFraming);
-
+            
             var roofFilter = new ElementCategoryFilter(BuiltInCategory.OST_Roofs);
             var floorFilter = new ElementCategoryFilter(BuiltInCategory.OST_Floors);
             var rampFilter = new ElementCategoryFilter(BuiltInCategory.OST_Ramps);
             var structuralFoundationFilter = new ElementCategoryFilter(BuiltInCategory.OST_StructuralFoundation);
 
-            var roofcollector = new FilteredElementCollector(doc).WherePasses(roofFilter);
-            var floorCollector = new FilteredElementCollector(doc).WherePasses(floorFilter);
-            var rampCollector = new FilteredElementCollector(doc).WherePasses(rampFilter);
-            var strFoundationCollector = new FilteredElementCollector(doc).WherePasses(structuralFoundationFilter);
-            var beamCollector = new FilteredElementCollector(doc).WherePasses(beamFilter);
-
+            var roofcollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(roofFilter);
+            var floorCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(floorFilter);
+            var rampCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(rampFilter);
+            var strFoundationCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(structuralFoundationFilter);
+            var beamCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(beamFilter);
+            
             //（1.梁随屋面）将与屋面在同一层的梁进行处理 使之紧贴屋面
             // -1. 获取屋面顶面或底面边界线
-
+            
             var rooffaces = default(IList<Reference>);
             foreach (RoofBase roof in roofcollector)
             {
                 if (IsAlignBottomFAce)
                 {
                     rooffaces = HostObjectUtils.GetBottomFaces(roof);
+                   
                 }
                 else if (IsAlignTopFAce)
                 {
                     rooffaces = HostObjectUtils.GetTopFaces(roof);
                 }
+                 
+                //for test
+                #region test  weather face is null
+                foreach (var reference in rooffaces)
+                {
+                    
+                    //var type = roof.GetGeometryObjectFromReference(reference).GetType().ToString();
+                    //MessageBox.Show(type);
+                     
+                    var face = roof.GetGeometryObjectFromReference(reference) as Face;
+                    if (face != null)
+                    {
+                        var edgeloops = face.GetEdgesAsCurveLoops();
+                        foreach (var edgeloop in edgeloops)
+                        {
+                            foreach (Curve c in edgeloop)
+                            {
+                                doc.NewLine(c as Line);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //var face1 = roof.GetGeometryObjectFromReference(reference);
+                        //MessageBox.Show("null");
+                    }
+                }
+                #endregion
+
                 if (rooffaces.Count == 0 || rooffaces == null) continue;
 
                 //确定屋面所在楼层
@@ -62,12 +95,12 @@ namespace 唐僧解瓦.建筑
                 var currentLevel = roof.LevelId.GetElement(doc) as Level;
                 //找到本楼层的梁
                 var beamsOfThisFloor = beamCollector.Where(m => m.LevelId == currentLevelId).ToList();
-                
+
                 //用屋面边线切断所有 投影相交的梁
-                
-                
+
+
             }
-            
+
             return Result.Succeeded;
         }
 
@@ -81,7 +114,7 @@ namespace 唐僧解瓦.建筑
                 var curveloops = temface.GetEdgesAsCurveLoops();
                 foreach (CurveLoop curveloop in curveloops)
                 {
-                   result.AddRange(curveloop.Cast<Curve>().ToList()); 
+                    result.AddRange(curveloop.Cast<Curve>().ToList());
                 }
             }
             return result;
