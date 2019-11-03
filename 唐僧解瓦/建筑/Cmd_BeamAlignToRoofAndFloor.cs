@@ -23,16 +23,16 @@ namespace 唐僧解瓦.建筑
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
             Selection sel = uidoc.Selection;
-            
+
             var acview = doc.ActiveView;
-            
+
             var IsAlignTopFAce = false;   //根据设置确定
             var IsAlignBottomFAce = true; //根据设置确定
-            
-            var selectionCollector = new FilteredElementCollector(doc,sel.GetElementIds());//选择集集合
-            
+
+            var selectionCollector = new FilteredElementCollector(doc, sel.GetElementIds());//选择集集合
+
             var beamFilter = new ElementCategoryFilter(BuiltInCategory.OST_StructuralFraming);
-            
+
             var roofFilter = new ElementCategoryFilter(BuiltInCategory.OST_Roofs);
             var floorFilter = new ElementCategoryFilter(BuiltInCategory.OST_Floors);
             var rampFilter = new ElementCategoryFilter(BuiltInCategory.OST_Ramps);
@@ -43,31 +43,32 @@ namespace 唐僧解瓦.建筑
             var rampCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(rampFilter);
             var strFoundationCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(structuralFoundationFilter);
             var beamCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(beamFilter);
-            
+
             //（1.梁随屋面）将与屋面在同一层的梁进行处理 使之紧贴屋面
             // -1. 获取屋面顶面或底面边界线
-            
+
             var rooffaces = default(IList<Reference>);
             foreach (RoofBase roof in roofcollector)
             {
                 if (IsAlignBottomFAce)
                 {
                     rooffaces = HostObjectUtils.GetBottomFaces(roof);
-                   
+
                 }
                 else if (IsAlignTopFAce)
                 {
                     rooffaces = HostObjectUtils.GetTopFaces(roof);
                 }
-                 
+                //排除空引用 
+                rooffaces = rooffaces.Where(m => roof.GetGeometryObjectFromReference(m) as Face != null).ToList();
+
                 //for test
                 #region test  weather face is null
                 foreach (var reference in rooffaces)
                 {
-                    
                     //var type = roof.GetGeometryObjectFromReference(reference).GetType().ToString();
                     //MessageBox.Show(type);
-                     
+
                     var face = roof.GetGeometryObjectFromReference(reference) as Face;
                     if (face != null)
                     {
@@ -97,7 +98,6 @@ namespace 唐僧解瓦.建筑
                 var beamsOfThisFloor = beamCollector.Where(m => m.LevelId == currentLevelId).ToList();
 
                 //用屋面边线切断所有 投影相交的梁
-
 
             }
 

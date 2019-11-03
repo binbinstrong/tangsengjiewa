@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using System.Windows.Media.Imaging;
+using 唐僧解瓦.机电;
+
 #region Copyright
 /************************************************************************************ 
  * Copyright (c) 2017Microsoft All Rights Reserved. 
@@ -39,15 +42,24 @@ namespace 唐僧解瓦
         public Autodesk.Revit.UI.Result OnStartup(UIControlledApplication application)
         {
 
-            string bintab = "唐僧BIM";
+            string bintab = "唐僧工具箱";
             application.CreateRibbonTab(bintab);
-            PushButtonData button1 = new PushButtonData("binbox", "resetbox", @"C:\ProgramData\Autodesk\Revit\Addins\2015\bincropbox.dll", "bincropbox.CropBoxQuickSet");
-            PushButtonData button2 = new PushButtonData("changeplane", "changeplane", @"C:\ProgramData\Autodesk\Revit\Addins\2015\changeplane.dll", "changeplane.binchangeplane");
 
-            RibbonPanel m_projectPanel = application.CreateRibbonPanel(bintab, "binpanel1");
+            var asmpath = Assembly.GetExecutingAssembly().Location;
+            Type extendwireT = typeof(Cmd_ExtendWire);
+
+            //PushButtonData button1 = new PushButtonData("binbox", "resetbox", @"C:\ProgramData\Autodesk\Revit\Addins\2015\bincropbox.dll", "bincropbox.CropBoxQuickSet");
+            //PushButtonData button2 = new PushButtonData("changeplane", "changeplane", @"C:\ProgramData\Autodesk\Revit\Addins\2015\changeplane.dll", "changeplane.binchangeplane");
+
+             
+            RibbonPanel m_projectPanel = application.CreateRibbonPanel(bintab, "电气");
             // Add the buttons to the panel
             List<RibbonItem> binButtons = new List<RibbonItem>();
-            binButtons.AddRange(m_projectPanel.AddStackedItems(button1, button2));
+
+            PushButtonData extendwirebuttonData = new PushButtonData("延长导线","延长导线",asmpath,extendwireT.FullName);
+            m_projectPanel.AddItem(extendwirebuttonData);
+
+            //binButtons.AddRange(m_projectPanel.AddStackedItems(extendwirebuttonData));
             
             
             // add new ribbon panel 
