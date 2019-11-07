@@ -13,7 +13,7 @@ using 唐僧解瓦.BinLibrary.Extensions;
 
 namespace 唐僧解瓦.机电
 {
-  /// <summary>
+    /// <summary>
     /// 延长导线命令 <electrical>
     /// </summary>
     [Transaction(TransactionMode.Manual)]
@@ -28,7 +28,7 @@ namespace 唐僧解瓦.机电
             var doc = uidoc.Document;
             var sel = uidoc.Selection;
             var acview = doc.ActiveView;
-             
+
             while (true)
             {
                 try
@@ -62,9 +62,20 @@ namespace 唐僧解瓦.机电
 
                     var globalpoint = wireref.GlobalPoint;
 
+                    globalpoint = new XYZ(globalpoint.X, globalpoint.Y, linefirst.StartPoint().Z);
+
+
                     if (!globalpoint.IsOnLine(linefirst) && !globalpoint.IsOnLine(linelast))
                     {
-                        MessageBox.Show("本功能不适应于曲线类型的导线 选择起始端或结束端导线");
+                        MessageBox.Show("本功能不适应于曲线类型的导线 选择起始端或结束端导线" 
+                                        //+ Environment.NewLine +
+                                        //globalpoint.IsOnLine(linefirst).ToString() + Environment.NewLine +
+                                        //globalpoint.IsOnLine(linelast).ToString() + Environment.NewLine +
+                                        //globalpoint.ToString() + Environment.NewLine +
+                                        //linefirst.StartPoint().ToString() + Environment.NewLine +
+                                        //linelast.StartPoint().ToString()
+                                        );
+                        continue;
                     }
 
                     Transaction ts1 = new Transaction(doc, "更改导线");
@@ -99,7 +110,7 @@ namespace 唐僧解瓦.机电
                     }
                     ts1.Commit();
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     break;
                 }
