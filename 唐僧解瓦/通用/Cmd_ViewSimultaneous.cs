@@ -13,6 +13,9 @@ using 唐僧解瓦.通用.UIs;
 
 namespace 唐僧解瓦.通用
 {
+    /// <summary>
+    /// 视图同步
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     class Cmd_ViewSimultaneous : IExternalCommand
     {
