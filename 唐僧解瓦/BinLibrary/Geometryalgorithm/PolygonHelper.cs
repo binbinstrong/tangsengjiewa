@@ -27,29 +27,29 @@ namespace 唐僧解瓦.BinLibrary.Geometryalgorithm
                 {
                     var curpo = points.ElementAt(i);
                     var nextpo = points.ElementAt(i + 1);
-                    var angle = Angle(curpo, nextpo, po, planNorm);
-                    //MessageBox.Show(angle.ToString());
-                    angles += angle;
-
+                     
                     var line = Line.CreateBound(curpo, nextpo);
                     if (po.IsOnLine(line))
                     {
                         return true;
                     }
+                    var angle = Angle(curpo, nextpo, po, planNorm);
+                    //MessageBox.Show(angle.ToString());
+                    angles += angle;
                 }
                 else if (i == points.Count - 1)
                 {
                     var curpo = points.ElementAt(i);
                     var nextpo = points.ElementAt(0);
-                    var angle = Angle(curpo, nextpo, po, planNorm);
-                    //MessageBox.Show(angle.ToString());
-                    angles += angle;
-
+                    
                     var line = Line.CreateBound(curpo, nextpo);
                     if (po.IsOnLine(line))
                     {
                         return true;
                     }
+                    var angle = Angle(curpo, nextpo, po, planNorm);
+                    //MessageBox.Show(angle.ToString());
+                    angles += angle;
                 }
             }
             //MessageBox.Show(angles.ToString());

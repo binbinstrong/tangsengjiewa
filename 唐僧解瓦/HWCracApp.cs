@@ -46,18 +46,30 @@ namespace 唐僧解瓦
             application.CreateRibbonTab(bintab);
 
             var asmpath = Assembly.GetExecutingAssembly().Location;
+
             Type extendwireT = typeof(Cmd_ExtendWire);
+            Type Cmd_HideSplitWireT = typeof(Cmd_HideSplitWire);
+            Type Cmd_HideSplitWiretestT = typeof(Cmd_HideSplitWiretest);
 
             //PushButtonData button1 = new PushButtonData("binbox", "resetbox", @"C:\ProgramData\Autodesk\Revit\Addins\2015\bincropbox.dll", "bincropbox.CropBoxQuickSet");
             //PushButtonData button2 = new PushButtonData("changeplane", "changeplane", @"C:\ProgramData\Autodesk\Revit\Addins\2015\changeplane.dll", "changeplane.binchangeplane");
 
-             
+
             RibbonPanel m_projectPanel = application.CreateRibbonPanel(bintab, "电气");
             // Add the buttons to the panel
             List<RibbonItem> binButtons = new List<RibbonItem>();
 
             PushButtonData extendwirebuttonData = new PushButtonData("延长导线","延长导线",asmpath,extendwireT.FullName);
+            PushButtonData Cmd_HideSplitWireTButtonData =
+                new PushButtonData("导线断线", "导线断线", asmpath, Cmd_HideSplitWireT.FullName);
+            PushButtonData Cmd_HideSplitWiretestTButtonData =
+                new PushButtonData("手动断线", "手动断线", asmpath, Cmd_HideSplitWiretestT.FullName);
+
             m_projectPanel.AddItem(extendwirebuttonData);
+            m_projectPanel.AddSeparator();
+            m_projectPanel.AddItem(Cmd_HideSplitWireTButtonData);
+            m_projectPanel.AddSeparator();
+            m_projectPanel.AddItem(Cmd_HideSplitWiretestTButtonData);
 
             //binButtons.AddRange(m_projectPanel.AddStackedItems(extendwirebuttonData));
             

@@ -29,7 +29,9 @@ namespace 唐僧解瓦.建筑
             var IsAlignTopFAce = false;   //根据设置确定
             var IsAlignBottomFAce = true; //根据设置确定
 
-            var selectionCollector = new FilteredElementCollector(doc, sel.GetElementIds());//选择集集合
+            var selectedIds = sel.GetElementIds();
+
+            var selectionCollector = new FilteredElementCollector(doc, selectedIds);//选择集集合
 
             var beamFilter = new ElementCategoryFilter(BuiltInCategory.OST_StructuralFraming);
 
@@ -38,66 +40,69 @@ namespace 唐僧解瓦.建筑
             var rampFilter = new ElementCategoryFilter(BuiltInCategory.OST_Ramps);
             var structuralFoundationFilter = new ElementCategoryFilter(BuiltInCategory.OST_StructuralFoundation);
 
-            var roofcollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(roofFilter);
-            var floorCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(floorFilter);
-            var rampCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(rampFilter);
-            var strFoundationCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(structuralFoundationFilter);
-            var beamCollector = new FilteredElementCollector(doc).WhereElementIsNotElementType().WherePasses(beamFilter);
+            var roofcollector = new FilteredElementCollector(doc, selectedIds).WhereElementIsNotElementType().WherePasses(roofFilter);
+            var floorCollector = new FilteredElementCollector(doc, selectedIds).WhereElementIsNotElementType().WherePasses(floorFilter);
+            var rampCollector = new FilteredElementCollector(doc, selectedIds).WhereElementIsNotElementType().WherePasses(rampFilter);
+            var strFoundationCollector = new FilteredElementCollector(doc, selectedIds).WhereElementIsNotElementType().WherePasses(structuralFoundationFilter);
+            var beamCollector = new FilteredElementCollector(doc, selectedIds).WhereElementIsNotElementType().WherePasses(beamFilter);
 
             //（1.梁随屋面）将与屋面在同一层的梁进行处理 使之紧贴屋面
             // -1. 获取屋面顶面或底面边界线
 
-            var rooffaces = default(IList<Reference>);
-            foreach (RoofBase roof in roofcollector)
+            var floorfaces = default(IList<Reference>);
+            foreach (Floor floor in floorCollector)
             {
                 if (IsAlignBottomFAce)
                 {
-                    rooffaces = HostObjectUtils.GetBottomFaces(roof);
-
+                    floorfaces = HostObjectUtils.GetBottomFaces(floor);
                 }
                 else if (IsAlignTopFAce)
                 {
-                    rooffaces = HostObjectUtils.GetTopFaces(roof);
+                    floorfaces = HostObjectUtils.GetTopFaces(floor);
                 }
                 //排除空引用 
-                rooffaces = rooffaces.Where(m => roof.GetGeometryObjectFromReference(m) as Face != null).ToList();
+                floorfaces = floorfaces.Where(m => floor.GetGeometryObjectFromReference(m) as Face != null).ToList();
 
                 //for test
                 #region test  weather face is null
-                foreach (var reference in rooffaces)
-                {
-                    //var type = roof.GetGeometryObjectFromReference(reference).GetType().ToString();
-                    //MessageBox.Show(type);
+                //foreach (var reference in floorfaces)
+                //{
+                //    //var type = roof.GetGeometryObjectFromReference(reference).GetType().ToString();
+                //    //MessageBox.Show(type);
 
-                    var face = roof.GetGeometryObjectFromReference(reference) as Face;
-                    if (face != null)
-                    {
-                        var edgeloops = face.GetEdgesAsCurveLoops();
-                        foreach (var edgeloop in edgeloops)
-                        {
-                            foreach (Curve c in edgeloop)
-                            {
-                                doc.NewLine(c as Line);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //var face1 = roof.GetGeometryObjectFromReference(reference);
-                        //MessageBox.Show("null");
-                    }
-                }
+                //    var face = floor.GetGeometryObjectFromReference(reference) as Face;
+                //    if (face != null)
+                //    {
+                //        var edgeloops = face.GetEdgesAsCurveLoops();
+                //        foreach (var edgeloop in edgeloops)
+                //        {
+                //            foreach (Curve c in edgeloop)
+                //            {
+                //                doc.NewLine(c as Line);
+                //            }
+                //        }
+                //    }
+                //    else
+                //    {
+                //        //var face1 = roof.GetGeometryObjectFromReference(reference);
+                //        //MessageBox.Show("null");
+                //    }
+                //}
                 #endregion
 
-                if (rooffaces.Count == 0 || rooffaces == null) continue;
-
-                //确定屋面所在楼层
-                var currentLevelId = roof.LevelId;
-                var currentLevel = roof.LevelId.GetElement(doc) as Level;
-                //找到本楼层的梁
-                var beamsOfThisFloor = beamCollector.Where(m => m.LevelId == currentLevelId).ToList();
-
+                if (floorfaces.Count == 0 || floorfaces == null) continue;
+                 
                 //用屋面边线切断所有 投影相交的梁
+
+                foreach (FamilyInstance beam in beamCollector)
+                {
+                    
+                    
+                    
+                    
+                }
+
+
 
             }
 
@@ -144,6 +149,53 @@ namespace 唐僧解瓦.建筑
         {
             var result = Plane.CreateByNormalAndOrigin(line.Direction.CrossProduct(vector).Normalize(), line.Origin);
             return result;
+        }
+
+        public List<FamilyInstance> CutBeam(FamilyInstance beam, XYZ point)
+        {
+            var result = new List<FamilyInstance>();
+            var doc = beam.Document;
+
+            var locationcurve = beam.Location as LocationCurve;
+            var locationline = locationcurve.Curve as Line;
+            if (locationline == null) return result;
+
+            point = point.ProjectToXLine(locationline);
+            if (point.IsOnLine(locationline))
+            {
+                var start = locationline.StartPoint();
+                var end = locationline.EndPoint();
+
+                var line1 = Line.CreateBound(start, point);
+                var line2 = Line.CreateBound(point, end);
+
+                (beam.Location as LocationCurve).Curve = line1;
+
+                var copiedBeams = ElementTransformUtils.CopyElement(beam.Document, beam.Id, new XYZ());
+                var beam2Id = copiedBeams.First();
+                var beam2 = beam2Id.GetElement(doc) as FamilyInstance;
+
+                (beam2.Location as LocationCurve).Curve = line2;
+
+                result.Add(beam);
+                result.Add(beam2);
+            }
+            else
+            {
+                throw new Exception("point is not on beam,can not cut beam!");
+            }
+
+            return result;
+        }
+
+        public List<FamilyInstance> CutBeam(FamilyInstance beam, Plane p)
+        {
+            var locationcurve = beam.Location as LocationCurve;
+            var locationline = locationcurve.Curve as Line;
+
+            var intersectPo = locationline.Intersect_cus(p);
+
+            return CutBeam(beam, intersectPo);
         }
     }
 }
