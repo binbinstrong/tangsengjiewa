@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.ExtensibleStorage;
-using Autodesk.Revit.UI;
-using 唐僧解瓦.Test;
-
-namespace TestForGe
+﻿namespace TestForGe
 {
     //[Transaction(TransactionMode.Manual)]
     //class OtherTest : IExternalCommand
@@ -93,7 +82,7 @@ namespace TestForGe
     //    [Record(true)] public double D { get; set; }
     //    [Record(true)] public float F { get; set; }
     //    [Record(true)] public bool B { get; set; }
-     
+
 
     //    //[Record(true)]
     //    //public Sex Sex { get; set; }

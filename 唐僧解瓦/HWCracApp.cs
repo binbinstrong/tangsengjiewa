@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Autodesk.Revit.UI;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit;
-using Autodesk.Revit.UI;
-using Autodesk.Revit.DB;
-using System.Windows.Media.Imaging;
+using 唐僧解瓦.BinLibrary.Extensions;
 using 唐僧解瓦.机电;
+using 唐僧解瓦.机电.About;
 
 #region Copyright
 /************************************************************************************ 
@@ -47,9 +43,14 @@ namespace 唐僧解瓦
 
             var asmpath = Assembly.GetExecutingAssembly().Location;
 
+
+            var image = Properties.Resource1.hideshow.ToBitmapSource();
+
             Type extendwireT = typeof(Cmd_ExtendWire);
             Type Cmd_HideSplitWireT = typeof(Cmd_HideSplitWire);
             Type Cmd_HideSplitWiretestT = typeof(Cmd_HideSplitWiretest);
+            Type Cmd_BreakWire = typeof(Cmd_BreakWire);
+            Type AboutCommandT = typeof(AboutCommand);
 
             //PushButtonData button1 = new PushButtonData("binbox", "resetbox", @"C:\ProgramData\Autodesk\Revit\Addins\2015\bincropbox.dll", "bincropbox.CropBoxQuickSet");
             //PushButtonData button2 = new PushButtonData("changeplane", "changeplane", @"C:\ProgramData\Autodesk\Revit\Addins\2015\changeplane.dll", "changeplane.binchangeplane");
@@ -59,21 +60,31 @@ namespace 唐僧解瓦
             // Add the buttons to the panel
             List<RibbonItem> binButtons = new List<RibbonItem>();
 
-            PushButtonData extendwirebuttonData = new PushButtonData("延长导线","延长导线",asmpath,extendwireT.FullName);
-            PushButtonData Cmd_HideSplitWireTButtonData =
-                new PushButtonData("导线断线", "导线断线", asmpath, Cmd_HideSplitWireT.FullName);
-            PushButtonData Cmd_HideSplitWiretestTButtonData =
-                new PushButtonData("手动断线", "手动断线", asmpath, Cmd_HideSplitWiretestT.FullName);
+            PushButtonData extendwirebuttonData = new PushButtonData("延长导线", "延长导线", asmpath, extendwireT.FullName);
+            PushButtonData Cmd_HideSplitWireTButtonData = new PushButtonData("导线断线", "导线断线", asmpath, Cmd_HideSplitWireT.FullName);
+            PushButtonData Cmd_HideSplitWiretestTButtonData = new PushButtonData("手动断线", "手动断线", asmpath, Cmd_HideSplitWiretestT.FullName);
+            PushButtonData Cmd_BreakWireTButtonData = new PushButtonData("切割导线", "切割导线", asmpath, Cmd_BreakWire.FullName);
+            PushButtonData aboutTButtonData = new PushButtonData("About", "About", asmpath, AboutCommandT.FullName);
+
+            extendwirebuttonData.LargeImage = image;
+            Cmd_HideSplitWireTButtonData.LargeImage = image;
+            Cmd_HideSplitWiretestTButtonData.LargeImage = image;
+            Cmd_BreakWireTButtonData.LargeImage = image;
+            aboutTButtonData.LargeImage = image;
 
             m_projectPanel.AddItem(extendwirebuttonData);
             m_projectPanel.AddSeparator();
             m_projectPanel.AddItem(Cmd_HideSplitWireTButtonData);
             m_projectPanel.AddSeparator();
             m_projectPanel.AddItem(Cmd_HideSplitWiretestTButtonData);
+            m_projectPanel.AddSeparator();
+            m_projectPanel.AddItem(Cmd_BreakWireTButtonData);
+            m_projectPanel.AddSeparator();
+            m_projectPanel.AddItem(aboutTButtonData);
 
             //binButtons.AddRange(m_projectPanel.AddStackedItems(extendwirebuttonData));
-            
-            
+
+
             // add new ribbon panel 
             //RibbonPanel ribbonPanel1 = application.CreateRibbonPanel("binpanel1");
             ////create a push button inthe bibbon panel "newbibbonpanel"
@@ -96,7 +107,7 @@ namespace 唐僧解瓦
             //PushButton pushbutton3_2 = ribbonPanel3.AddItem(new PushButtonData("binst5","binst4",@"D:\helloworld.dll", "HelloWorld.CsHelloWorld")) as PushButton;
             //PushButton pushbutton3_3 = ribbonPanel3.AddItem(new PushButtonData("binst6","binst4",@"D:\helloworld.dll", "HelloWorld.CsHelloWorld")) as PushButton;
             //ribbonPanel3.AddSeparator();
-            
+
             return Result.Succeeded;
 
         }

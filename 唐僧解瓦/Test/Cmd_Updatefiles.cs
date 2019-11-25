@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Microsoft.Win32;
-using 唐僧解瓦.BinLibrary.Helpers;
-using 唐僧解瓦.BinLibrary.RevitHelper;
 
 namespace 唐僧解瓦.Test
 {

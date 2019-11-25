@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using 唐僧解瓦.BinLibrary.Extensions;
 using 唐僧解瓦.BinLibrary.Geometryalgorithm;
 using 唐僧解瓦.BinLibrary.Helpers;
-using Point = System.Windows.Point;
 
 namespace 唐僧解瓦.机电
 {

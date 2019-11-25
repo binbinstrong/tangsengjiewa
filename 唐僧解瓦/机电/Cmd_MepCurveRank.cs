@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 //using BinLibrary;
 //using BinLibrary.Extensions;
 //using BinLibrary.RevitExtension;
 //using BinLibrary.RevitHelper;
 using 唐僧解瓦.BinLibrary.Extensions;
 using 唐僧解瓦.BinLibrary.RevitHelper;
-using 唐僧解瓦.BinLibrary.Extensions;
 using 唐僧解瓦.机电.ToolUIs;
 namespace 唐僧解瓦.机电
 {

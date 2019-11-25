@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
-using 唐僧解瓦.BinLibrary.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 using 唐僧解瓦.通用.UIs;
 
 namespace 唐僧解瓦.通用
@@ -52,8 +47,7 @@ namespace 唐僧解瓦.通用
 
             Id_view1 = (selector.combo1.SelectionBoxItem as View).Id;
             Id_view2 = (selector.combo2.SelectionBoxItem as View).Id;
-             
-
+            
             //激活两个窗口 并关闭其余窗口
             uidoc.ActiveView = doc.GetElement(Id_view2) as View;
             uidoc.ActiveView = doc.GetElement(Id_view1) as View;
@@ -109,8 +103,7 @@ namespace 唐僧解瓦.通用
 
             var uiview1 = uidoc.GetOpenUIViews().Where(m => m.ViewId == Id_view1).FirstOrDefault();
             var uiview2 = uidoc.GetOpenUIViews().Where(m => m.ViewId == Id_view2).FirstOrDefault();
-
-
+             
             var viewcorners = uiview1.GetZoomCorners();
             var corner1 = viewcorners.First();
             var corner2 = viewcorners.Last();

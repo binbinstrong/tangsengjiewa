@@ -1,10 +1,4 @@
 ﻿using Autodesk.Revit.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using 唐僧解瓦.BinLibrary.Helpers;
 
 namespace 唐僧解瓦.BinLibrary.Extensions
 {

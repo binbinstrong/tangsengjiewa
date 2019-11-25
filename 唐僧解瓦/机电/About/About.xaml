@@ -1,0 +1,31 @@
+﻿<Window x:Class="唐僧解瓦.机电.About.About"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:唐僧解瓦.机电.About"
+             xmlns:winform ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+             mc:Ignorable="d" Height="317.399" Width="498.118">
+
+    <Border CornerRadius="5" BorderThickness="4" BorderBrush="Orange">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="5" FontSize="25" Text="唐僧工具箱-电气" TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text=" 本插件为龙哥定制插件" TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text="功能：电气导线延长 打断 遮盖断线" TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text="唐僧课堂 专注于Revit二次开发，Revit二次开发培训" TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text="Revit二开技术交流qq群：166072827" TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text="开发者：骑白马的唐僧，QQ:384785044" TextAlignment="Center"/>
+                <Label Margin="5" FontSize="20" Content=" 唐僧课堂地址：https://bimdp.ke.qq.com"  HorizontalContentAlignment="Center" Foreground="Blue" MouseDown="OnMouseDown"/>
+
+            </StackPanel>
+           
+        </Grid>
+    </Border>
+
+</Window>

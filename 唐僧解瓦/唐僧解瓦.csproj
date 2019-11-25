@@ -61,8 +61,10 @@
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\UIFrameworkServices.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinLibrary\Extensions\BitmapExtension.cs" />
     <Compile Include="BinLibrary\Extensions\ColorExtension.cs" />
     <Compile Include="BinLibrary\Extensions\ConnectorExtension.cs" />
     <Compile Include="BinLibrary\Extensions\CreationExtension.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="BinLibrary\Extensions\ReferenceExtension.cs" />
     <Compile Include="BinLibrary\Extensions\SelectionFilter.cs" />
     <Compile Include="BinLibrary\Extensions\TransactionExtension.cs" />
+    <Compile Include="BinLibrary\Extensions\UIDocumentExtension.cs" />
     <Compile Include="BinLibrary\Extensions\VectorExtension.cs" />
     <Compile Include="BinLibrary\Extensions\WindwoExtension.cs" />
     <Compile Include="BinLibrary\Extensions\XYZExtension.cs" />
@@ -90,12 +93,19 @@
     <Compile Include="Class1.cs" />
     <Compile Include="HWCracApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Test\Cmd_DimLine.cs" />
     <Compile Include="Test\Cmd_DimPipe.cs" />
     <Compile Include="Test\Cmd_ExternalStorageDataTest.cs" />
     <Compile Include="Test\Cmd_ExternalStorageTest.cs" />
+    <Compile Include="Test\Cmd_FlipTee.cs" />
     <Compile Include="Test\Cmd_GetCuttedFace.cs" />
     <Compile Include="Test\Cmd_InRegionTest.cs" />
+    <Compile Include="Test\Cmd_SurfaceTest.cs" />
     <Compile Include="Test\TestCmd_AdaptiveTest.cs" />
     <Compile Include="Test\UIs\AboutForm.cs">
       <SubType>Form</SubType>
@@ -119,7 +129,13 @@
     <Compile Include="Test\TestCmd_FIlterRoom.cs" />
     <Compile Include="建筑\Cmd_BeamAlignToRoofAndFloor.cs" />
     <Compile Include="建筑\Cmd_CreateFloorQukly.cs" />
+    <Compile Include="建筑\Cmd_CutFloorWithLine.cs" />
     <Compile Include="建筑\Utils.cs" />
+    <Compile Include="机电\About\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="机电\About\AboutCommand.cs" />
+    <Compile Include="机电\Cmd_BreakWire.cs" />
     <Compile Include="机电\Cmd_ChamferPipes.cs" />
     <Compile Include="机电\Cmd_changeSystem.cs" />
     <Compile Include="机电\Cmd_ConnectEquipMent.cs" />
@@ -133,6 +149,8 @@
     <Compile Include="机电\ToolUIs\MepcurveRank.xaml.cs">
       <DependentUpon>MepcurveRank.xaml</DependentUpon>
     </Compile>
+    <Compile Include="注释\Cmd_FlipDimension.cs" />
+    <Compile Include="注释\Cmd_SectionGap.cs" />
     <Compile Include="通用\Cmd_3DregionView.cs" />
     <Compile Include="通用\Cmd_ReverseBackGroundColor.cs" />
     <Compile Include="通用\Cmd_ChangeBackGroundColor.cs" />
@@ -156,6 +174,10 @@
     <Compile Include="高级\Cmd_CallSystemCmd.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="机电\About\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="机电\ToolUIs\MepcurveRank.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,12 +199,19 @@
     <Folder Include="结构\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Test\UIs\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Test\UIs\ColumnTypesForm.resx">
       <DependentUpon>ColumnTypesForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hideshow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

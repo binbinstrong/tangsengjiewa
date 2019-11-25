@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using System.Collections.Generic;
 using UIFrameworkServices;
 
 namespace 唐僧解瓦.高级
 {
     /// <summary>
-    /// 调用revit 本身命令 模拟手动操作
+    /// 调用revit 本身命令 模拟手动操作 打断剖切符号
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     class Cmd_CallSystemCmd:IExternalCommand
