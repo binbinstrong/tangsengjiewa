@@ -52,7 +52,7 @@ namespace 唐僧解瓦.Test
             var temline = Line.CreateBound(point, point + XYZ.BasisZ * 10);
             doc.NewLine(temline);
             var result = IsPointInRegion(point, points,XYZ.BasisZ);
-            //MessageBox.Show(result.ToString());
+            MessageBox.Show(result.ToString());
             return Result.Succeeded;
         }
         public bool IsPointInRegion(XYZ po, List<XYZ> points)

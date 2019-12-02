@@ -62,6 +62,7 @@
     <Compile Include="BinLibrary\Extensions\ColorExtension.cs" />
     <Compile Include="BinLibrary\Extensions\ConnectorExtension.cs" />
     <Compile Include="BinLibrary\Extensions\CreationExtension.cs" />
+    <Compile Include="BinLibrary\Extensions\DocumentExtension.cs" />
     <Compile Include="BinLibrary\Extensions\DoubleExtension.cs" />
     <Compile Include="BinLibrary\Extensions\ElementIdExtension.cs" />
     <Compile Include="BinLibrary\Extensions\GeometryElementExtension.cs" />
