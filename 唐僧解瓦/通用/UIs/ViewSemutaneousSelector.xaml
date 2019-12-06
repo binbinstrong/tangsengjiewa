@@ -1,0 +1,24 @@
+﻿<Window x:Class="唐僧解瓦.通用.UIs.ViewSemutaneousSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:唐僧解瓦.通用.UIs"
+             mc:Ignorable="d" Height="101.389" Width="430.556">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+
+            <StackPanel Orientation="Vertical" Width="200">
+                <TextBlock Text="选择视图1"></TextBlock>
+                <ComboBox Name="combo1"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Width="200">
+                <TextBlock Text="选择视图2"></TextBlock>
+                <ComboBox Name="combo2"></ComboBox>
+                <Button Content="OK" Margin="5" Width="50" HorizontalAlignment="Right" Click="Clicked"></Button>
+            </StackPanel>
+        </StackPanel>
+         
+    </Grid>
+</Window>
