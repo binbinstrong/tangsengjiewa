@@ -15,7 +15,9 @@ using Application = Autodesk.Revit.ApplicationServices.Application;
 
 namespace 唐僧解瓦.建筑
 {
-
+    /// <summary>
+    /// 划线切板
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     class Cmd_CutFloorWithLine : IExternalCommand
     {
