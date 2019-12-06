@@ -135,7 +135,14 @@ namespace 唐僧解瓦.建筑
         public Plane ConstructPlane(XYZ origin, XYZ vector1, XYZ vector2)
         {
             var result = default(Plane);
-            result = Plane.CreateByNormalAndOrigin(vector1.CrossProduct(vector2).Normalize(), origin);
+
+#if Revit2019
+              result = Plane.CreateByNormalAndOrigin(vector1.CrossProduct(vector2).Normalize(), origin);
+#endif
+#if Revit2016
+            result = new Plane(vector1.CrossProduct(vector2).Normalize(), origin);
+#endif
+             
             return result;
         }
         /// <summary>
@@ -147,7 +154,16 @@ namespace 唐僧解瓦.建筑
         /// <returns></returns>
         public Plane ConstructPlane(Line line, XYZ vector)
         {
-            var result = Plane.CreateByNormalAndOrigin(line.Direction.CrossProduct(vector).Normalize(), line.Origin);
+
+            var result = default(Plane);
+
+#if Revit2019
+              result = Plane.CreateByNormalAndOrigin(line.Direction.CrossProduct(vector).Normalize(), line.Origin);
+#endif
+#if Revit2016
+            result = new Plane(line.Direction.CrossProduct(vector).Normalize(), line.Origin);
+#endif
+            //var result = Plane.CreateByNormalAndOrigin(line.Direction.CrossProduct(vector).Normalize(), line.Origin);
             return result;
         }
 

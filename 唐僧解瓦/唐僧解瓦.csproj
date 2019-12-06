@@ -59,9 +59,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="UIFrameworkServices, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\UIFrameworkServices.dll</HintPath>
+    <Reference Include="UIFrameworkServices">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2016\UIFrameworkServices.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -137,11 +136,15 @@
     <Compile Include="机电\ToolUIs\MepcurveRank.xaml.cs">
       <DependentUpon>MepcurveRank.xaml</DependentUpon>
     </Compile>
+    <Compile Include="样板\Cmd_CopyViewCut.cs" />
     <Compile Include="样板\Cmd_CreateNewCableTrayType.cs" />
     <Compile Include="样板\Cmd_HideMepCenter.cs" />
     <Compile Include="样板\Cmd_HideRevitInstance.cs" />
     <Compile Include="样板\UIs\TypeSelector.xaml.cs">
       <DependentUpon>TypeSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="样板\UIs\ViewSelector.xaml.cs">
+      <DependentUpon>ViewSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="通用\Cmd_3DregionView.cs" />
     <Compile Include="通用\Cmd_ReverseBackGroundColor.cs" />
@@ -171,6 +174,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="样板\UIs\TypeSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="样板\UIs\ViewSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

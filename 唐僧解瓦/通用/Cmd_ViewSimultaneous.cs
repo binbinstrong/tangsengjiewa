@@ -71,7 +71,14 @@ namespace 唐僧解瓦.通用
             }
 
             //2.平铺窗口
-            var tileviewcommand = RevitCommandId.LookupPostableCommandId(PostableCommand.TileViews);
+            var tileviewcommand =
+                default(RevitCommandId); // RevitCommandId.LookupPostableCommandId(PostableCommand.TileViews);
+#if Revit2019
+            tileviewcommand = RevitCommandId.LookupPostableCommandId(PostableCommand.TileViews);
+#endif
+#if Revit2016
+            tileviewcommand = RevitCommandId.LookupPostableCommandId(PostableCommand.TileWindows);
+#endif
             uiapp.PostCommand(tileviewcommand);
 
             //在空闲事件中 同步视图
