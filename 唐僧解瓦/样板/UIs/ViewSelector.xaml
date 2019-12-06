@@ -4,21 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:唐僧解瓦.样板.UIs"
-             mc:Ignorable="d" Width="334.646" Height="238.582">
+             mc:Ignorable="d" Width="252.756" Height="291.732">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Name ="stackpanel1"  Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Margin="5">
-                <StackPanel Orientation="Vertical" Margin="5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="源视图"></TextBlock>
+                <StackPanel Orientation="Vertical" Margin="5" CanVerticallyScroll="True">
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock Text="源视图" Margin="5"></TextBlock>
                         <ComboBox Name="sourceView" Width="100"></ComboBox>
                     </StackPanel>
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="5" Width="100">
-                    <ListView BorderBrush="Aqua" BorderThickness="4" Name="targetViewList"   MinHeight="150" MinWidth="100">
+                    <TextBlock Text="目标视图" Margin="5"></TextBlock>
+                    <ListView BorderBrush="Aqua" BorderThickness="4" Name="targetViewList"   Height="150" MinWidth="100" Margin="5" >
                     </ListView>
                 </StackPanel>
-                <Button Content="OK" Name="okBtn" Width="60" Height ="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0" Click="OkClicked"></Button>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" >
+                    <Button Content="OK" x:Name="okBtn" Width="60" Height ="40" HorizontalAlignment="Right"  VerticalAlignment="Stretch" Margin="0,0,10,0" Click="OkClicked"/>
+                    <Button Content="Cl" x:Name="CancelBtn" Width="60" Height ="40" HorizontalAlignment="Right"  VerticalAlignment="Stretch" Margin="0,0,10,0" Click="CancelClicked"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -29,5 +29,11 @@ namespace 唐僧解瓦.样板.UIs
         {
             this.Hide();
         }
+
+        private void CancelClicked(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            
+        }
     }
 }

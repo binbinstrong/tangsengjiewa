@@ -136,7 +136,7 @@
     <Compile Include="机电\ToolUIs\MepcurveRank.xaml.cs">
       <DependentUpon>MepcurveRank.xaml</DependentUpon>
     </Compile>
-    <Compile Include="样板\Cmd_CopyViewCut.cs" />
+    <Compile Include="样板\Cmd_CopyViewCropRegion.cs" />
     <Compile Include="样板\Cmd_CreateNewCableTrayType.cs" />
     <Compile Include="样板\Cmd_HideMepCenter.cs" />
     <Compile Include="样板\Cmd_HideRevitInstance.cs" />
