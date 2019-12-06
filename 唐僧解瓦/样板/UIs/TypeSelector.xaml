@@ -1,0 +1,27 @@
+﻿<Window x:Class="唐僧解瓦.样板.UIs.TypeSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:唐僧解瓦.样板.UIs"
+             mc:Ignorable="d" Width="253.149" Height="145.275">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="5" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="基础桥架类型" VerticalAlignment="Center"></TextBlock>
+                <ComboBox Name="typecombo" Width="150"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="新类型名称" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Name="typeName" Text="新类型名称" Width="90" VerticalAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="桥架注释"></TextBlock>
+                <TextBox Text="类型注释" Name="noteText" Width="90" HorizontalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <Button Content="确定" Width="50" Margin="5,0,20,0" HorizontalAlignment="Right"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

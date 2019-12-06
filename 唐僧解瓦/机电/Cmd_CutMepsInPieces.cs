@@ -157,6 +157,13 @@ namespace 唐僧解瓦.机电
                               point.DistanceTo(end) > 1d.MetricToFeet();
             if (!executeflag) throw new Exception("点不在线上");
             var doc = mep.Document;
+
+#if Revit2016
+            return null;
+#endif
+#if Revit2019
+            
+
             ElementId result = null;
             if (mep is Duct)
             {
@@ -179,6 +186,7 @@ namespace 唐僧解瓦.机电
                 result = newcabletray.Id;
             }
             return result.GetElement(doc) as MEPCurve;
+#endif
         }
     }
 }

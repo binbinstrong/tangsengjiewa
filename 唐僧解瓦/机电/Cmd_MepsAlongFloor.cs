@@ -43,7 +43,12 @@ namespace 唐僧解瓦.机电
 
             var planeNorm = planarFace.FaceNormal;
             var planeOrigin = planarFace.Origin;
+#if Revit2016
+            var plane =new Plane(planeNorm, planeOrigin);
+#endif
+#if Revit2019
             var plane = Plane.CreateByNormalAndOrigin(planeNorm, planeOrigin);
+#endif
 
             Transform trs = Transform.Identity;
             trs.Origin = planeOrigin;

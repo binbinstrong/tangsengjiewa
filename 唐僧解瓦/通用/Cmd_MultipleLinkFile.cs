@@ -39,7 +39,7 @@ namespace 唐僧解瓦.通用
 
             var count = opdg.FileNames.Length;
             string[] files = new string[count];
-            
+
             if (dialogresult == true)
             {
                 files = opdg.FileNames;
@@ -51,7 +51,7 @@ namespace 唐僧解瓦.通用
                     var linktypeId = CreateRevitLink(doc, file);
                     CreateLinkInstances(doc, linktypeId);
                 }
-            },"批量链接");
+            }, "批量链接");
 
             return Result.Succeeded;
         }
@@ -60,9 +60,14 @@ namespace 唐僧解瓦.通用
         {
             FilePath path = new FilePath(pathName);
             RevitLinkOptions options = new RevitLinkOptions(false);
-            // Create new revit link storing absolute path to file   
+            // Create new revit link storing absolute path to file  
+#if Revit2019
             LinkLoadResult result = RevitLinkType.Create(doc, path, options);
-            return (result.ElementId);
+    return (result.ElementId);
+#endif
+#if Revit2016
+            return null;
+#endif
         }
 
         public void CreateLinkInstances(Document doc, ElementId linkTypeId)

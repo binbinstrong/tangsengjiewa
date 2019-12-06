@@ -43,7 +43,16 @@ namespace 唐僧解瓦.BinLibrary.Extensions
 
             #endregion
 
-            var plan = Plane.CreateByNormalAndOrigin(norm, origin);
+            var plan = default(Plane); // Plane.CreateByNormalAndOrigin(norm, origin);
+
+#if Revit2016
+            plan = new Plane(norm, origin);
+#endif
+#if Revit2019
+            plan = Plane.CreateByNormalAndOrigin(norm, origin);
+#endif
+
+
             doc.Invoke(m =>
             {
                 var sketchplane = SketchPlane.Create(doc, plan);
