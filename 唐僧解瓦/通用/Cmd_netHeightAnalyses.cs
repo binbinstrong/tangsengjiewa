@@ -97,20 +97,24 @@ namespace 唐僧解瓦.通用
                 //geometrys.Add(geometry);
                 var geometrys1 = new List<GeometryObject>() { geometry };
 
+#if Revit2019
                 doc.Invoke(m =>
                 {
                     var directShape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));
                     directShape.AppendShape(geometrys1);
                 }, "创建内建模型");
+#endif
+
+
 
             }
-            
+
             //SpatialElementGeometryCalculator spatialGeometryCal = new SpatialElementGeometryCalculator(doc);
             //foreach (Room room in rooms)
             //{
             //    var roomGeo = spatialGeometryCal.CalculateSpatialElementGeometry(room);
             //}
-            
+
             return Result.Succeeded;
         }
 

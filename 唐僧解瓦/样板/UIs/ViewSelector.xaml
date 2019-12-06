@@ -1,0 +1,27 @@
+﻿<Window x:Class="唐僧解瓦.样板.UIs.ViewSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:唐僧解瓦.样板.UIs"
+             mc:Ignorable="d" Width="252.756" Height="291.732">
+    <Grid>
+        <StackPanel Name ="stackpanel1"  Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <StackPanel Orientation="Vertical" Margin="5" CanVerticallyScroll="True">
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock Text="源视图" Margin="5"></TextBlock>
+                        <ComboBox Name="sourceView" Width="100"></ComboBox>
+                    </StackPanel>
+                    <TextBlock Text="目标视图" Margin="5"></TextBlock>
+                    <ListView BorderBrush="Aqua" BorderThickness="4" Name="targetViewList"   Height="150" MinWidth="100" Margin="5" >
+                    </ListView>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" >
+                    <Button Content="OK" x:Name="okBtn" Width="60" Height ="40" HorizontalAlignment="Right"  VerticalAlignment="Stretch" Margin="0,0,10,0" Click="OkClicked"/>
+                    <Button Content="Cl" x:Name="CancelBtn" Width="60" Height ="40" HorizontalAlignment="Right"  VerticalAlignment="Stretch" Margin="0,0,10,0" Click="CancelClicked"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

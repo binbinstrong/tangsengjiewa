@@ -109,31 +109,61 @@ namespace ClassLibrary3
             {
                 XYZ normal = getVertVec(line.Direction).Normalize();
                 XYZ origin = line.GetEndPoint(0);
-                sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
+#if Revit2016
+                sp = SketchPlane.Create(document, new Plane(normal, origin)) ;
+#endif
+#if Revit2019
+                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
+#endif
+
             }
             else if (arc != null && null == sp)
             {
                 XYZ normal = arc.Normal;
+#if Revit2016
+                sp = SketchPlane.Create(document, new Plane(normal, arc.Center));
+#endif
+#if Revit2019
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, arc.Center));
+#endif
             }
             else if (ellipse != null && null == sp)
             {
                 XYZ normal = ellipse.Normal;
+#if true
+                sp = SketchPlane.Create(document,new Plane(normal, ellipse.Center));
+#endif
+#if Revit2019
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, ellipse.Center));
+#endif
             }
             else if (spline != null && null == sp)
             {
                 Transform tran = spline.ComputeDerivatives(0, false);
                 XYZ normal = getVertVec(tran.BasisX).Normalize();
                 XYZ origin = spline.GetEndPoint(0);
+#if Revit2016
+                sp = SketchPlane.Create(document,new Plane(normal, origin));
+
+#endif
+#if Revit2019
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
+
+#endif
             }
             else if (nbSpline != null && null == sp)
             {
                 Transform tran = nbSpline.ComputeDerivatives(0, false);
                 XYZ normal = getVertVec(tran.BasisX).Normalize();
                 XYZ origin = nbSpline.GetEndPoint(0);
+#if Revit2016
+                sp = SketchPlane.Create(document, new Plane(normal, origin));
+
+#endif
+#if Revit2019
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
+
+#endif
             }
 
             if (sp == null)
