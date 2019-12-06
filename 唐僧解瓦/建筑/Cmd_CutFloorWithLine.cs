@@ -29,7 +29,7 @@ namespace 唐僧解瓦.建筑
             var app = uiapp.Application;
             App = app;
             var uidoc = uiapp.ActiveUIDocument;
-            
+
             var doc = uidoc.Document;
             var sel = uidoc.Selection;
 
@@ -87,7 +87,7 @@ namespace 唐僧解瓦.建筑
 
             try
             {
-                
+
 
                 var ActiveDoc = docsInApp.FirstOrDefault();
 
@@ -110,8 +110,20 @@ namespace 唐僧解瓦.建筑
                 var leftNorm = updir.CrossProduct(linedir).Normalize();
                 var rightNorm = updir.CrossProduct(-linedir).Normalize();
 
-                var leftspacePlane = Plane.CreateByNormalAndOrigin(leftNorm, startpo);
-                var rightspacePlane = Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+                var leftspacePlane = default(Plane);// Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+                var rightspacePlane = default(Plane);//Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+
+#if Revit2016
+                leftspacePlane = new Plane(leftNorm, startpo);
+                rightspacePlane = new Plane(rightNorm, startpo);
+
+#endif
+#if Revit2019
+                
+              leftspacePlane=  Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+              rightspacePlane =Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+#endif
+
 
 
                 var slapshapeEditor = floor.SlabShapeEditor;
@@ -151,7 +163,7 @@ namespace 唐僧解瓦.建筑
                         floor.LevelId.GetElement(ActiveDoc) as Level, false);
                     doc.Delete(floor.Id);
                 }, "newfloor");
-                 
+
                 //var newfloor2 =
                 //    ActiveDoc.Create.NewFloor(, floor.FloorType, floor.LevelId.GetElement(ActiveDoc) as Level, false);
 
@@ -177,7 +189,7 @@ namespace 唐僧解瓦.建筑
                 var docsInApp = App.Documents.Cast<Document>();
 
                 var ActiveDoc = e.GetDocument();
-                  ids_add = e.GetAddedElementIds();
+                ids_add = e.GetAddedElementIds();
 
                 if (ids_add.Count != 1)
                 {
@@ -198,8 +210,22 @@ namespace 唐僧解瓦.建筑
                 var leftNorm = updir.CrossProduct(linedir).Normalize();
                 var rightNorm = updir.CrossProduct(-linedir).Normalize();
 
-                var leftspacePlane = Plane.CreateByNormalAndOrigin(leftNorm, startpo);
-                var rightspacePlane = Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+                var leftspacePlane  = default(Plane);//Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+                var rightspacePlane = default(Plane);//PPlane.CreateByNormalAndOrigin(rightNorm, startpo);
+
+
+
+#if Revit2016
+                leftspacePlane = new Plane(leftNorm, startpo);
+                rightspacePlane = new Plane(rightNorm, startpo);
+
+#endif
+#if Revit2019
+                
+              leftspacePlane=  Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+              rightspacePlane =Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+#endif
+
 
 
                 var slapshapeEditor = floor.SlabShapeEditor;
