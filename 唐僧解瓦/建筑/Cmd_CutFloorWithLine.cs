@@ -42,39 +42,20 @@ namespace 唐僧解瓦.建筑
             floor =
               sel.PickObject(ObjectType.Element, doc.GetSelectionFilter(m => m is Floor)).GetElement(doc) as Floor;
 
-            //var revitcommandiId = RevitCommandId.LookupPostableCommandId(PostableCommand.ModelLine);
-            //uiapp.PostCommand(revitcommandiId);
-            //uidoc.ActiveUIView().ZoomToFit();
-
+#if Revit2019
             CommandHandlerService.invokeCommandHandler("ID_OBJECTS_PROJECT_CURVE");
 
-            //var points = new List<XYZ>();
+#endif
 
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        var po = sel.PickPoint();
-            //        points.Add(po);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        break;
-            //    }
-            //}
 
-            //var slabshapeEditor = floor.SlabShapeEditor;
 
-            //Transaction ts = new Transaction(doc, "change");
+#if Revit2016
+              //调用postablecommand 
+              var commandid = RevitCommandId.LookupPostableCommandId(PostableCommand.ModelLine);
+              uiapp.PostCommand(commandid);
+            
+#endif
 
-            //ts.Start();
-            //{
-            //    SlabShapeVertex vertex1 = slabshapeEditor.DrawPoint(points[0]);
-            //    SlabShapeVertex vertex2 = slabshapeEditor.DrawPoint(points[1]);
-            //    slabshapeEditor.DrawSplitLine(vertex1, vertex2);
-            //}
-
-            //ts.Commit();
 
             return Result.Succeeded;
         }
@@ -89,7 +70,6 @@ namespace 唐僧解瓦.建筑
 
             try
             {
-
 
                 var ActiveDoc = docsInApp.FirstOrDefault();
 
@@ -121,14 +101,14 @@ namespace 唐僧解瓦.建筑
 
 #endif
 #if Revit2019
-                
-              leftspacePlane=  Plane.CreateByNormalAndOrigin(leftNorm, startpo);
-              rightspacePlane =Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+
+                leftspacePlane = Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+                rightspacePlane = Plane.CreateByNormalAndOrigin(rightNorm, startpo);
 #endif
 
 
 
-                var slapshapeEditor = floor.SlabShapeEditor;
+                //var slapshapeEditor = floor.SlabShapeEditor;
                 //剪切楼板
 
                 //var verticals = slapshapeEditor.SlabShapeVertices.Cast<XYZ>();
@@ -212,7 +192,7 @@ namespace 唐僧解瓦.建筑
                 var leftNorm = updir.CrossProduct(linedir).Normalize();
                 var rightNorm = updir.CrossProduct(-linedir).Normalize();
 
-                var leftspacePlane  = default(Plane);//Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+                var leftspacePlane = default(Plane);//Plane.CreateByNormalAndOrigin(leftNorm, startpo);
                 var rightspacePlane = default(Plane);//PPlane.CreateByNormalAndOrigin(rightNorm, startpo);
 
 
@@ -223,9 +203,9 @@ namespace 唐僧解瓦.建筑
 
 #endif
 #if Revit2019
-                
-              leftspacePlane=  Plane.CreateByNormalAndOrigin(leftNorm, startpo);
-              rightspacePlane =Plane.CreateByNormalAndOrigin(rightNorm, startpo);
+
+                leftspacePlane = Plane.CreateByNormalAndOrigin(leftNorm, startpo);
+                rightspacePlane = Plane.CreateByNormalAndOrigin(rightNorm, startpo);
 #endif
 
 
@@ -265,8 +245,7 @@ namespace 唐僧解瓦.建筑
 
                 //var newfloor2 =
                 //    ActiveDoc.Create.NewFloor(, floor.FloorType, floor.LevelId.GetElement(ActiveDoc) as Level, false);
-
-
+                 
                 //slapshapeEditor.DrawSplitLine()
                 if (this != null)
                     App.DocumentChanged -= OnDocumentChanged;

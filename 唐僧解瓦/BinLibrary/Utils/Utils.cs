@@ -130,7 +130,7 @@ namespace ClassLibrary3
             else if (ellipse != null && null == sp)
             {
                 XYZ normal = ellipse.Normal;
-#if true
+#if Revit2016
                 sp = SketchPlane.Create(document,new Plane(normal, ellipse.Center));
 #endif
 #if Revit2019
