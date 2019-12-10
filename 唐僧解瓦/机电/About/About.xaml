@@ -16,8 +16,8 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="5" FontSize="25" Text="唐僧工具箱-电气" TextAlignment="Center"/>
-                <TextBlock Margin="5" FontSize="20" Text=" 本插件为龙哥定制插件" TextAlignment="Center"/>
-                <TextBlock Margin="5" FontSize="20" Text="功能：电气导线延长 打断 遮盖断线" TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text="   " TextAlignment="Center"/>
+                <TextBlock Margin="5" FontSize="20" Text="功能： " TextAlignment="Center"/>
                 <TextBlock Margin="5" FontSize="20" Text="唐僧课堂 专注于Revit二次开发，Revit二次开发培训" TextAlignment="Center"/>
                 <TextBlock Margin="5" FontSize="20" Text="Revit二开技术交流qq群：166072827" TextAlignment="Center"/>
                 <TextBlock Margin="5" FontSize="20" Text="开发者：骑白马的唐僧，QQ:384785044" TextAlignment="Center"/>

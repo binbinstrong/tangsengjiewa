@@ -61,7 +61,7 @@ namespace 唐僧解瓦.BinLibrary.Extensions
            
             if(compareResulst!=SetComparisonResult.Disjoint)
             {
-                var result = intersectResult.Cast<XYZ>().First();
+                var result = intersectResult.get_Item(0).XYZPoint;
                 return result;
             }
 
