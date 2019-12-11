@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="样板\Cmd_CopyViewCropRegion.cs" />
     <Compile Include="样板\Cmd_CreateNewCableTrayType.cs" />
+    <Compile Include="注释\Cmd_DimAllDuctsAndNearestGrid.cs" />
     <Compile Include="样板\Cmd_HideMepCenter.cs" />
     <Compile Include="样板\Cmd_HideRevitInstance.cs" />
     <Compile Include="样板\UIs\TypeSelector.xaml.cs">
@@ -164,6 +165,8 @@
     <Compile Include="样板\UIs\ViewSelector.xaml.cs">
       <DependentUpon>ViewSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="注释\Cmd_DimAllPipesAndNearestGrid.cs" />
+    <Compile Include="注释\Cmd_DimPipeAndGrid.cs" />
     <Compile Include="注释\Cmd_FlipDimension.cs" />
     <Compile Include="注释\Cmd_SectionGap.cs" />
     <Compile Include="通用\Cmd_3DregionView.cs" />
@@ -238,6 +241,7 @@
     <Content Include="Resources\hideshow.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="工具\AssemblyTools1.1 无日期限制版.zip" />
     <None Include="样例项目\楼板测试.rvt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
