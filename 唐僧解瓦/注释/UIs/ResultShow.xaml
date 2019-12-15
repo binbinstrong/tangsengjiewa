@@ -1,0 +1,20 @@
+﻿<Window x:Class="唐僧解瓦.注释.UIs.ResultShow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:唐僧解瓦.注释.UIs"
+             mc:Ignorable="d" WindowStyle="ToolWindow" Height="117" Width="177">
+    <Grid>
+        <Border BorderThickness="2" BorderBrush="Aquamarine" CornerRadius="4">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="总长度" HorizontalAlignment="Center" Margin="5"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox Name="totalLen" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="80"></TextBox>
+                    <TextBlock Text="mm"></TextBlock>
+                </StackPanel>
+                <Button Content="统计长度" Width="65" Margin="0,5,0,0" Click="OnClicked"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

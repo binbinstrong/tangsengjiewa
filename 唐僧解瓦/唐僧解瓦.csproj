@@ -131,6 +131,7 @@
     <Compile Include="建筑\Cmd_BeamAlignToRoofAndFloor.cs" />
     <Compile Include="建筑\Cmd_CreateFloorQukly.cs" />
     <Compile Include="建筑\Cmd_CutFloorWithLine.cs" />
+    <Compile Include="建筑\Cmd_SetDefaultWallType.cs" />
     <Compile Include="建筑\Utils.cs" />
     <Compile Include="机电\About\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
@@ -168,7 +169,11 @@
     <Compile Include="注释\Cmd_DimAllPipesAndNearestGrid.cs" />
     <Compile Include="注释\Cmd_DimPipeAndGrid.cs" />
     <Compile Include="注释\Cmd_FlipDimension.cs" />
+    <Compile Include="注释\Cmd_LengthAccumulate.cs" />
     <Compile Include="注释\Cmd_SectionGap.cs" />
+    <Compile Include="注释\UIs\ResultShow.xaml.cs">
+      <DependentUpon>ResultShow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="通用\Cmd_3DregionView.cs" />
     <Compile Include="通用\Cmd_ReverseBackGroundColor.cs" />
     <Compile Include="通用\Cmd_ChangeBackGroundColor.cs" />
@@ -209,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="样板\UIs\ViewSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="注释\UIs\ResultShow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
