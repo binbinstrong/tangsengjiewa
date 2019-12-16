@@ -14,7 +14,7 @@ using 唐僧解瓦.BinLibrary.Helpers;
 namespace 唐僧解瓦.注释
 {
     /// <summary>
-    /// 标注成排管道 
+    /// 标注成排管道  未完成
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     class Cmd_DimAllPipesAndNearestGrid : IExternalCommand

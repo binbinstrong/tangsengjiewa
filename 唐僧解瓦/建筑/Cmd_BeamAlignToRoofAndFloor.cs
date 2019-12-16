@@ -9,6 +9,10 @@ using 唐僧解瓦.BinLibrary.Extensions;
 
 namespace 唐僧解瓦.建筑
 {
+
+    /// <summary>
+    /// 梁随板 未完成
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Journaling(JournalingMode.UsingCommandData)]
     [Regeneration(RegenerationOption.Manual)]

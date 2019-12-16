@@ -8,7 +8,7 @@ using System;
 namespace 唐僧解瓦.机电
 {
     /// <summary>
-    /// 设备连接
+    /// 设备连接 未完成
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]

@@ -14,6 +14,9 @@ using 唐僧解瓦.机电.ToolUIs;
 
 namespace 唐僧解瓦.机电
 {
+    /// <summary>
+    /// 管道三通支管提升
+    /// </summary>
     [Transaction(TransactionMode.Manual)]
     class Cmd_RaiseTeeBranch : IExternalCommand
     {
@@ -121,7 +124,6 @@ namespace 唐僧解瓦.机电
                                 con.ConnectTo(branchCon);
                             }
                         }
-
                         pipe.ElbowConnect(newpipe);
 
                         ts.Commit();

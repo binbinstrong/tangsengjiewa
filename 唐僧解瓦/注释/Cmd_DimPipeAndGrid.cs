@@ -10,7 +10,7 @@ using Autodesk.Revit.UI;
 namespace 唐僧解瓦.注释
 {
     /// <summary>
-    /// 标注管道和轴线距离
+    /// 标注管道和轴线距离  未完成
     /// </summary>
     [Transaction(TransactionMode.Manual)]
     class Cmd_DimPipeAndGrid:IExternalCommand
