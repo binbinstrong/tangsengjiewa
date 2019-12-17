@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace 唐僧解瓦.机电.ToolUIs
 {
@@ -28,6 +29,13 @@ namespace 唐僧解瓦.机电.ToolUIs
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
              
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            e.Cancel = true;
+            base.OnClosing(e);
+            this.Hide();
         }
     }
 }
