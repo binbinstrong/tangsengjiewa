@@ -34,31 +34,44 @@ namespace 唐僧解瓦.注释
 
             var pipes = collectorForPipe.OfClass(typeof(Pipe)).ToElementIds().ToList();
 
+
+            //方法一
+            var groups = GroupPipes(pipes, doc, 800, 300);
+            MessageBox.Show(groups.Count.ToString());
+
+
+
             //Delegate dele(Document doc, ElementId id, Line line)
             //{
             //    (id.GetElement(doc) as Pipe).LocationLine();}
             //;
 
-            Func<Element, Line> @delegate = (Element ele) => { return (ele as Pipe).LocationLine(); };
-            Func<Element, Line> @delegate1 = delegate(Element ele) { return (ele as Pipe).LocationLine();};
+
+            ////方法2.首先将管道按照方向分组
+            //Func<Element, Line> @delegate = (Element ele) => { return (ele as Pipe).LocationLine(); };
+            //Func<Element, Line> @delegate1 = delegate(Element ele) { return (ele as Pipe).LocationLine();};
+            
+            //var paralleledpipes = pipes.Select(m => m.GetElement(doc)).GroupBy(@delegate);
 
 
-            //1.将管道按照方向分组
-            var paralleledpipes = pipes.Select(m => m.GetElement(doc)).GroupBy(@delegate);
-             
-            var groups = GroupPipes(pipes, doc, 300, 300);
-            MessageBox.Show(groups.Count.ToString());
-
+            var count = 0;
             foreach (var group in groups)
             {
-                sel.SetElementIds(group);
-                if (group.Count > 3)
+                //if (group.Count >= 2)
                 {
+                    if (count > 20)
+                    {
+                        break;
+                    }
+                    sel.SetElementIds(group);
                     uidoc.ShowElements(group);
+                    uidoc.RefreshActiveView();
+                    
+                    MessageBox.Show("temstop");
 
                     var ids = "count" + string.Join("::", group.Select(m => m.IntegerValue)) + "\n";
-
                     LogHelper.LogWrite(ids, @"c:\tongji.txt", true);
+                    count++;
                 }
             }
 
@@ -73,8 +86,7 @@ namespace 唐僧解瓦.注释
 
             var pipeRecord = new List<ElementId>();
             var count = 0;
-
-
+            
             foreach (var pipeid in pipeids)
             {
                 //MessageBox.Show("section1");
@@ -124,8 +136,7 @@ namespace 唐僧解瓦.注释
 
                         var startpo1 = line1.StartPoint();
                         var endpo1 = line1.EndPoint();
-
-
+                        
                         //1.共线管线添加到组里面
                         var flag1 = false; //距离标志
                         if (startpo.DistanceTo(startpo1) < tolerance / 304.8 ||
@@ -134,20 +145,21 @@ namespace 唐僧解瓦.注释
                             endpo.DistanceTo(endpo1) < tolerance / 304.8
                         ) flag1 = true;
 
+
                         var flag2 = false; //共线标志
                         if (line.Direction.IsXOnLine(line1))
                         {
                             flag2 = true;
                         }
 
-                        // 2.平行水平间距小于一定的距离HorDis 也添加到组里面
-                        var flag3 = false;
+                        // 2.平行水平间距小于一定的距离(HorDis) 也添加到组里面
+                        var flag3 = false; //管线平行标志
                         if (line.Direction.IsParallel(line1.Direction))
                         {
                             flag3 = true;
                         }
 
-                        var flag4 = false;
+                        var flag4 = false; //管线水平间距标志
                         var pipeHorDis = GetHorizontalDis(line, line1).Value;
 
                         if (pipeHorDis < horDis / 304.8) //水平间距小于一定距离
@@ -155,7 +167,7 @@ namespace 唐僧解瓦.注释
                             flag4 = true;
                         }
 
-                        if (flag1 && flag2)
+                        if (flag1 && flag2) //共线且端点距离小于容差值
                         {
                             pipegroup.Add(pipeid);
                             pipeRecord.Add(pipeid);
@@ -180,7 +192,7 @@ namespace 唐僧解瓦.注释
 
             }
 
-            LogHelper.LogWrite(count.ToString(), @"c:\totalcount.txt");
+            //LogHelper.LogWrite(count.ToString(), @"c:\totalcount.txt");
 
             return result;
         }
