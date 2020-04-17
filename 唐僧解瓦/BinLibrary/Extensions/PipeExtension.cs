@@ -62,5 +62,37 @@ namespace 唐僧解瓦.BinLibrary.Extensions
 
             return result;
         }
+
+        public static Connector StartCon(this Pipe pipe1)
+        {
+            Connector result = null;
+
+            var locationline = pipe1.LocationLine();
+
+
+            var connectors = pipe1.ConnectorManager.Connectors.Cast<Connector>()
+                .Where(m => m.ConnectorType == ConnectorType.End).ToList();
+
+            var startcon = connectors.First(m => m.Origin.IsAlmostEqualTo(locationline.StartPoint()));
+            result = startcon;
+
+            return result;
+        }
+
+        public static Connector EndCon(this Pipe pipe1)
+        {
+            Connector result = null;
+
+            var locationline = pipe1.LocationLine();
+
+
+            var connectors = pipe1.ConnectorManager.Connectors.Cast<Connector>()
+                .Where(m => m.ConnectorType == ConnectorType.End).ToList();
+
+            var startcon = connectors.First(m => m.Origin.IsAlmostEqualTo(locationline.EndPoint()));
+            result = startcon;
+
+            return result;
+        }
     }
 }
