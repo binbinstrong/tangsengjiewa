@@ -46,6 +46,8 @@ namespace 唐僧解瓦
 
             var image = Properties.Resource1.hideshow.ToBitmapSource();
 
+            //var image_extendwiere = Properties.Resource1
+
             Type extendwireT = typeof(Cmd_ExtendWire);
             Type Cmd_HideSplitWireT = typeof(Cmd_HideSplitWire);
             Type Cmd_HideSplitWiretestT = typeof(Cmd_HideSplitWiretest);

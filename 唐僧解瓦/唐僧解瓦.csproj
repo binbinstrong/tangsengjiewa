@@ -276,6 +276,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\hideshow.png" />
+    <None Include="Resources\sj2.png" />
+    <None Include="Resources\sj1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="工具\AssemblyTools1.1 无日期限制版.zip" />
