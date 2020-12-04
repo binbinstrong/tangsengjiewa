@@ -38,7 +38,7 @@ namespace 唐僧解瓦
         public Autodesk.Revit.UI.Result OnStartup(UIControlledApplication application)
         {
 
-            string bintab = "唐僧工具箱";
+            string bintab = "陕建BIM";
             application.CreateRibbonTab(bintab);
 
             var asmpath = Assembly.GetExecutingAssembly().Location;
@@ -46,7 +46,8 @@ namespace 唐僧解瓦
 
             var image = Properties.Resource1.hideshow.ToBitmapSource();
 
-            //var image_extendwiere = Properties.Resource1
+            var image_extendwiere = Properties.Resource2.sj1.ToBitmapSource();
+            var image_aboutButton = Properties.Resource2.sj2.ToBitmapSource();
 
             Type extendwireT = typeof(Cmd_ExtendWire);
             Type Cmd_HideSplitWireT = typeof(Cmd_HideSplitWire);
@@ -68,11 +69,11 @@ namespace 唐僧解瓦
             PushButtonData Cmd_BreakWireTButtonData = new PushButtonData("切割导线", "切割导线", asmpath, Cmd_BreakWire.FullName);
             PushButtonData aboutTButtonData = new PushButtonData("About", "About", asmpath, AboutCommandT.FullName);
 
-            extendwirebuttonData.LargeImage = image;
+            extendwirebuttonData.LargeImage = image_extendwiere;
             Cmd_HideSplitWireTButtonData.LargeImage = image;
             Cmd_HideSplitWiretestTButtonData.LargeImage = image;
             Cmd_BreakWireTButtonData.LargeImage = image;
-            aboutTButtonData.LargeImage = image;
+            aboutTButtonData.LargeImage = image_aboutButton;
 
             m_projectPanel.AddItem(extendwirebuttonData);
             m_projectPanel.AddSeparator();

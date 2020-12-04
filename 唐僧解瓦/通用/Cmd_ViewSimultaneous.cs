@@ -137,8 +137,7 @@ namespace 唐僧解瓦.通用
             //var view4 = doc.GetElement() as View;
 
             var acuiview = uidoc.GetOpenUIViews().Where(m => m.ViewId == acview.Id).FirstOrDefault();
-
-
+             
             var views = new List<ElementId>() {Id_view1, Id_view2, Id_view3, Id_view4};
 
             var leftviews = views.Where(m => m != acview.Id).ToList();

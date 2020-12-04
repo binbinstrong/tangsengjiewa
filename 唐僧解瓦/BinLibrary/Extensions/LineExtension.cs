@@ -19,6 +19,12 @@ namespace 唐僧解瓦.BinLibrary.Extensions
             return null;
         }
 
+        /// <summary>
+        /// 垂直于面 错误
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static XYZ Intersect_cus(this Line line, Plane p)
         {
             var lineorigin = line.Origin;

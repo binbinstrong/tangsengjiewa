@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using 唐僧解瓦.样板.UIs;
+using View = Autodesk.Revit.DB.View;
 
 namespace 唐僧解瓦.样板
 {
@@ -22,7 +24,7 @@ namespace 唐僧解瓦.样板
 
             try
             {
-                 
+
                 var uiapp = commandData.Application;
                 var uidoc = uiapp.ActiveUIDocument;
                 var doc = uidoc.Document;
@@ -50,13 +52,23 @@ namespace 唐僧解瓦.样板
 
                 var boundingbox = sourceview.CropBox;
 
+
+                //MessageBox.Show(boundingbox.Max.ToString() + Environment.NewLine+ 
+                //    boundingbox.Min.ToString());
+
                 foreach (var targetview in targetviews)
                 {
-                    targetview.CropBox = boundingbox;
+                    var boundingbox1 = new BoundingBoxXYZ();
+                    boundingbox1.Transform = targetview.CropBox.Transform;
+                    boundingbox1.Max = boundingbox.Max;
+                    boundingbox1.Min = boundingbox.Min;
+
+                    targetview.CropBox = boundingbox1;
+
                     var para_crop = targetview.get_Parameter(BuiltInParameter.VIEWER_CROP_REGION);
                     var para_crop_visible = targetview.get_Parameter(BuiltInParameter.VIEWER_CROP_REGION_VISIBLE);
-                    para_crop_visible.Set(1);
                     para_crop.Set(1);
+                    para_crop_visible.Set(1);
                 }
 
                 ts.Commit();

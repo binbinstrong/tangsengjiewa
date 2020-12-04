@@ -13,16 +13,29 @@ namespace 唐僧解瓦.BinLibrary.Extensions
 
             foreach (Connector con in conectors)
             {
-               
-                if (con.ConnectorType == ConnectorType.End || con.ConnectorType == ConnectorType.Curve)
+                if (con.IsConnectedTo(connector) && con.ConnectorType != ConnectorType.Logical)
                 {
-                    var conOrigin = con.Origin;
-                    var condir = con.CoordinateSystem.BasisZ;
-                    if (connectorOrigin.IsAlmostEqualTo(conOrigin) && connectordir.IsOppositeDirection(condir))
-                    {
-                        result = con;
-                    }
+                    result = con;
                 }
+
+                //if (con.ConnectorType == ConnectorType.End )
+                //{
+                //    var conOrigin = con.Origin;
+                //    var condir = con.CoordinateSystem.BasisZ;
+                //    if (connectorOrigin.IsAlmostEqualTo(conOrigin) && connectordir.IsOppositeDirection(condir))
+                //    {
+                //        result = con;
+                //    }
+                //}
+                //else if (con.ConnectorType == ConnectorType.Curve)
+                //{
+                //    var conOrigin = con.Origin;
+                //    var condir = con.CoordinateSystem.BasisZ;
+                //    if (connectorOrigin.IsAlmostEqualTo(conOrigin) && connectordir.IsOppositeDirection(condir))
+                //    {
+                //        result = con;
+                //    }
+                //}
             }
             return result;
         }
