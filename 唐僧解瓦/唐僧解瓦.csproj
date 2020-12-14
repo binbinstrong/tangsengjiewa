@@ -145,10 +145,13 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="机电\About\AboutCommand.cs" />
+    <Compile Include="机电\Cmd_BreakWire.cs" />
     <Compile Include="机电\Cmd_ChamferPipes.cs" />
     <Compile Include="机电\Cmd_changeSystem.cs" />
     <Compile Include="机电\Cmd_ConnectEquipMent.cs" />
     <Compile Include="机电\Cmd_CutMepsInPieces.cs" />
+    <Compile Include="机电\Cmd_ExtendWire.cs" />
+    <Compile Include="机电\Cmd_HideSplitWire.cs" />
     <Compile Include="机电\Cmd_MepCurveBreak.cs" />
     <Compile Include="机电\Cmd_MepCurveRank.cs" />
     <Compile Include="机电\Cmd_MepsAlongFloor.cs" />
