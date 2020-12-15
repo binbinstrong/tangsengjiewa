@@ -103,9 +103,7 @@ namespace 唐僧解瓦.机电
             }
 
             ts.Commit();
-
-
-
+            
             return Result.Succeeded;
         }
     }
