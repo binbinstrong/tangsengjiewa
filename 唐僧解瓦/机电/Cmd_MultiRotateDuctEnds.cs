@@ -26,16 +26,14 @@ namespace 唐僧解瓦.机电
             var uidoc = uiapp.ActiveUIDocument;
             var doc = uidoc.Document;
             var sel = uidoc.Selection;
-
-
+            
             //1.find all ductEnds which needs ratate
 
             var collector = new FilteredElementCollector(doc);
             var familyinstances = collector.OfClass(typeof(FamilyInstance)).WhereElementIsNotElementType().Cast<FamilyInstance>();
 
             var ductEnds = familyinstances.Where(m => m.Symbol.FamilyName.Contains("单层百叶风口"));
-
-
+            
             MessageBox.Show(ductEnds.Count().ToString());
 
             Transaction ts = new Transaction(doc, "旋转风口");

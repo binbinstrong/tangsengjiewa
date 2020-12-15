@@ -21,10 +21,8 @@ namespace 唐僧解瓦.样板
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-
             try
             {
-
                 var uiapp = commandData.Application;
                 var uidoc = uiapp.ActiveUIDocument;
                 var doc = uidoc.Document;
@@ -32,8 +30,7 @@ namespace 唐僧解瓦.样板
 
                 var collecor = new FilteredElementCollector(doc);
                 var planviews = collecor.OfClass(typeof(ViewPlan)).Where(m => !(m as ViewPlan).IsTemplate).OrderBy(m => m.Name);
-
-
+                
                 ViewSelector selector = new ViewSelector();
                 selector.sourceView.ItemsSource = planviews;
                 selector.sourceView.DisplayMemberPath = "Name";
@@ -51,8 +48,7 @@ namespace 唐僧解瓦.样板
                 ts.Start();
 
                 var boundingbox = sourceview.CropBox;
-
-
+                
                 //MessageBox.Show(boundingbox.Max.ToString() + Environment.NewLine+ 
                 //    boundingbox.Min.ToString());
 
@@ -62,7 +58,6 @@ namespace 唐僧解瓦.样板
                     boundingbox1.Transform = targetview.CropBox.Transform;
                     boundingbox1.Max = boundingbox.Max;
                     boundingbox1.Min = boundingbox.Min;
-
                     targetview.CropBox = boundingbox1;
 
                     var para_crop = targetview.get_Parameter(BuiltInParameter.VIEWER_CROP_REGION);
@@ -70,16 +65,17 @@ namespace 唐僧解瓦.样板
                     para_crop.Set(1);
                     para_crop_visible.Set(1);
                 }
-
                 ts.Commit();
-
                 selector.Close();
             }
             catch (Exception e)
             {
                 return Result.Cancelled;
             }
+            
             return Result.Succeeded;
         }
     }
+
+     
 }
