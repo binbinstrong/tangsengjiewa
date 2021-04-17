@@ -72,10 +72,10 @@ namespace 唐僧解瓦.样板
             {
                 return Result.Cancelled;
             }
-            
+ 
             return Result.Succeeded;
         }
     }
-
+ 
      
 }

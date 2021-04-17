@@ -16,6 +16,7 @@ namespace 唐僧解瓦.注释
     /// <summary>
     /// 标注成排管道  未完成
     /// </summary>
+    [Regeneration(RegenerationOption.Manual)]
     [Transaction(TransactionMode.Manual)]
     class Cmd_DimAllPipesAndNearestGrid : IExternalCommand
     {
@@ -29,11 +30,8 @@ namespace 唐僧解瓦.注释
             var sel = uidoc.Selection;
 
             var collecorForGrid = new FilteredElementCollector(doc);
-
             var collectorForPipe = new FilteredElementCollector(doc, acview.Id);
-
             var pipes = collectorForPipe.OfClass(typeof(Pipe)).ToElementIds().ToList();
-
 
             //方法一
             var groups = GroupPipes(pipes, doc, 800, 300);
@@ -50,10 +48,9 @@ namespace 唐僧解瓦.注释
             ////方法2.首先将管道按照方向分组
             //Func<Element, Line> @delegate = (Element ele) => { return (ele as Pipe).LocationLine(); };
             //Func<Element, Line> @delegate1 = delegate(Element ele) { return (ele as Pipe).LocationLine();};
-            
+
             //var paralleledpipes = pipes.Select(m => m.GetElement(doc)).GroupBy(@delegate);
-
-
+            
             var count = 0;
             foreach (var group in groups)
             {
@@ -66,7 +63,7 @@ namespace 唐僧解瓦.注释
                     sel.SetElementIds(group);
                     uidoc.ShowElements(group);
                     uidoc.RefreshActiveView();
-                    
+
                     MessageBox.Show("temstop");
 
                     var ids = "count" + string.Join("::", group.Select(m => m.IntegerValue)) + "\n";
@@ -74,8 +71,6 @@ namespace 唐僧解瓦.注释
                     count++;
                 }
             }
-
-
 
             return Result.Succeeded;
         }
@@ -86,7 +81,7 @@ namespace 唐僧解瓦.注释
 
             var pipeRecord = new List<ElementId>();
             var count = 0;
-            
+
             foreach (var pipeid in pipeids)
             {
                 //MessageBox.Show("section1");
@@ -136,7 +131,7 @@ namespace 唐僧解瓦.注释
 
                         var startpo1 = line1.StartPoint();
                         var endpo1 = line1.EndPoint();
-                        
+
                         //1.共线管线添加到组里面
                         var flag1 = false; //距离标志
                         if (startpo.DistanceTo(startpo1) < tolerance / 304.8 ||
@@ -203,19 +198,12 @@ namespace 唐僧解瓦.注释
             {
                 return null;
             }
-
             var result = default(double);
-
             var origin = line1.Origin;
-
             var originProjOnLine2 = origin.ProjectToXLine(line2);
-
-
             var neworigin = new XYZ(origin.X, origin.Y, 0);
             var newprojOrigin = new XYZ(originProjOnLine2.X, originProjOnLine2.Y, 0);
-
             result = neworigin.DistanceTo(newprojOrigin);
-
             return result;
         }
 

@@ -145,13 +145,10 @@
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
     <Compile Include="机电\About\AboutCommand.cs" />
-    <Compile Include="机电\Cmd_BreakWire.cs" />
     <Compile Include="机电\Cmd_ChamferPipes.cs" />
     <Compile Include="机电\Cmd_changeSystem.cs" />
     <Compile Include="机电\Cmd_ConnectEquipMent.cs" />
     <Compile Include="机电\Cmd_CutMepsInPieces.cs" />
-    <Compile Include="机电\Cmd_ExtendWire.cs" />
-    <Compile Include="机电\Cmd_HideSplitWire.cs" />
     <Compile Include="机电\Cmd_MepCurveBreak.cs" />
     <Compile Include="机电\Cmd_MepCurveRank.cs" />
     <Compile Include="机电\Cmd_MepsAlongFloor.cs" />
@@ -206,6 +203,7 @@
     <Compile Include="通用\Cmd_UnhideElementsInFamlyDoc.cs" />
     <Compile Include="通用\Cmd_UpdateFiles.cs" />
     <Compile Include="通用\Cmd_ViewSimultaneous.cs" />
+    <Compile Include="通用\Cmd_MepLineUpDownVisble.cs" />
     <Compile Include="通用\UIs\FloorSelector.xaml.cs">
       <DependentUpon>FloorSelector.xaml</DependentUpon>
     </Compile>
@@ -263,6 +261,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TemTest\" />
     <Folder Include="结构\" />
   </ItemGroup>
   <ItemGroup>
