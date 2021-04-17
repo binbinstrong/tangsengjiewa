@@ -38,7 +38,7 @@ namespace 唐僧解瓦
         public Autodesk.Revit.UI.Result OnStartup(UIControlledApplication application)
         {
 
-            string bintab = "陕建BIM";
+            string bintab = "AAAbim";
             application.CreateRibbonTab(bintab);
 
             var asmpath = Assembly.GetExecutingAssembly().Location;
