@@ -112,7 +112,7 @@ namespace ClassLibrary3
 #if Revit2016
                 sp = SketchPlane.Create(document, new Plane(normal, origin)) ;
 #endif
-#if Revit2019
+#if Revit2018
                  sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
 #endif
 
@@ -123,7 +123,7 @@ namespace ClassLibrary3
 #if Revit2016
                 sp = SketchPlane.Create(document, new Plane(normal, arc.Center));
 #endif
-#if Revit2019
+#if Revit2018
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, arc.Center));
 #endif
             }
@@ -133,7 +133,7 @@ namespace ClassLibrary3
 #if Revit2016
                 sp = SketchPlane.Create(document,new Plane(normal, ellipse.Center));
 #endif
-#if Revit2019
+#if Revit2018
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, ellipse.Center));
 #endif
             }
@@ -146,7 +146,7 @@ namespace ClassLibrary3
                 sp = SketchPlane.Create(document,new Plane(normal, origin));
 
 #endif
-#if Revit2019
+#if Revit2018
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
 
 #endif
@@ -160,7 +160,7 @@ namespace ClassLibrary3
                 sp = SketchPlane.Create(document, new Plane(normal, origin));
 
 #endif
-#if Revit2019
+#if Revit2018
                 sp = SketchPlane.Create(document, Plane.CreateByNormalAndOrigin(normal, origin));
 
 #endif

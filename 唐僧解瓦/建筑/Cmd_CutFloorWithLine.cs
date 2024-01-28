@@ -42,7 +42,7 @@ namespace 唐僧解瓦.建筑
             floor =
               sel.PickObject(ObjectType.Element, doc.GetSelectionFilter(m => m is Floor)).GetElement(doc) as Floor;
 
-#if Revit2019
+#if Revit2018
             CommandHandlerService.invokeCommandHandler("ID_OBJECTS_PROJECT_CURVE");
 
 #endif
@@ -100,7 +100,7 @@ namespace 唐僧解瓦.建筑
                 rightspacePlane = new Plane(rightNorm, startpo);
 
 #endif
-#if Revit2019
+#if Revit2018
 
                 leftspacePlane = Plane.CreateByNormalAndOrigin(leftNorm, startpo);
                 rightspacePlane = Plane.CreateByNormalAndOrigin(rightNorm, startpo);
@@ -202,7 +202,7 @@ namespace 唐僧解瓦.建筑
                 rightspacePlane = new Plane(rightNorm, startpo);
 
 #endif
-#if Revit2019
+#if Revit2018
 
                 leftspacePlane = Plane.CreateByNormalAndOrigin(leftNorm, startpo);
                 rightspacePlane = Plane.CreateByNormalAndOrigin(rightNorm, startpo);

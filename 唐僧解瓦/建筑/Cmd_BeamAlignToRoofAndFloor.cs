@@ -137,7 +137,7 @@ namespace 唐僧解瓦.建筑
         {
             var result = default(Plane);
 
-#if Revit2019
+#if Revit2018
               result = Plane.CreateByNormalAndOrigin(vector1.CrossProduct(vector2).Normalize(), origin);
 #endif
 #if Revit2016
@@ -158,7 +158,7 @@ namespace 唐僧解瓦.建筑
 
             var result = default(Plane);
 
-#if Revit2019
+#if Revit2018
               result = Plane.CreateByNormalAndOrigin(line.Direction.CrossProduct(vector).Normalize(), line.Origin);
 #endif
 #if Revit2016

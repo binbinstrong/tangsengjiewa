@@ -97,7 +97,7 @@ namespace 唐僧解瓦.通用
                 //geometrys.Add(geometry);
                 var geometrys1 = new List<GeometryObject>() { geometry };
 
-#if Revit2019
+#if Revit2018
                 doc.Invoke(m =>
                 {
                     var directShape = DirectShape.CreateElement(doc, new ElementId(BuiltInCategory.OST_GenericModel));

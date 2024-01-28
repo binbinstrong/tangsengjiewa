@@ -91,9 +91,10 @@ namespace 唐僧解瓦.通用
             //2.平铺窗口
             var tileviewcommand =
                 default(RevitCommandId); // RevitCommandId.LookupPostableCommandId(PostableCommand.TileViews);
-#if Revit2019
-            tileviewcommand = RevitCommandId.LookupPostableCommandId(PostableCommand.TileViews);
+#if Revit2018
+            tileviewcommand = RevitCommandId.LookupPostableCommandId(PostableCommand.TileWindows);
 #endif
+
 #if Revit2016
             tileviewcommand = RevitCommandId.LookupPostableCommandId(PostableCommand.TileWindows);
 #endif
@@ -109,6 +110,9 @@ namespace 唐僧解瓦.通用
 
         private void OnviewActivated(object sender, ViewActivatedEventArgs e)
         {
+
+            var a = default(double);
+
             var uiapp = sender as UIApplication;
             var uidoc = uiapp.ActiveUIDocument;
             var doc = uidoc.Document;

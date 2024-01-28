@@ -48,7 +48,7 @@ namespace 唐僧解瓦.样板
                 acview.SetVisibility(conduitdrop, false);
                 acview.SetVisibility(pipedrop, false);
 #endif
-#if Revit2019
+#if Revit2018
                 acview.SetCategoryHidden(ductrizedrop.Id,false);
                 acview.SetCategoryHidden(cablerizedrop.Id,false);
                 acview.SetCategoryHidden(conduitrizedrop.Id,false);

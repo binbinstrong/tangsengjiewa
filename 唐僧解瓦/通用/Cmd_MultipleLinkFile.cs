@@ -56,7 +56,7 @@ namespace 唐僧解瓦.通用
             FilePath path = new FilePath(pathName);
             RevitLinkOptions options = new RevitLinkOptions(false);
             // Create new revit link storing absolute path to file  
-#if Revit2019
+#if Revit2018
             LinkLoadResult result = RevitLinkType.Create(doc, path, options);
     return (result.ElementId);
 #endif

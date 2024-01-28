@@ -13,7 +13,7 @@ namespace 唐僧解瓦.BinLibrary.Extensions
 
             norm = dir.getRandomNorm();
             var plan = default(Plane);//.CreateByNormalAndOrigin(norm, origin);
-#if Revit2019
+#if Revit2018
               plan = Plane.CreateByNormalAndOrigin(norm, origin);
 #endif
 #if Revit2016
@@ -60,7 +60,7 @@ namespace 唐僧解瓦.BinLibrary.Extensions
 #if Revit2016
             plan = new Plane(norm, origin);
 #endif
-#if Revit2019
+#if Revit2018
             plan = Plane.CreateByNormalAndOrigin(norm, origin);
 #endif
 
